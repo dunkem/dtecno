@@ -1,12 +1,88 @@
-/* src/components/HeroSection.css */
 .hero {
-    background: #007bff;
-    color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px; /* Añadir padding horizontal */
+  color: #fff;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  gap: 20px;
+}
+
+.text-content {
+  flex: 1;
+}
+
+.text-content h1 {
+  font-size: 4rem; /* Aumentar el tamaño de la fuente del título */
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Añadir sombra al texto */
+}
+
+.text-content p {
+  font-size: 2rem; /* Aumentar el tamaño de la fuente del párrafo */
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Añadir sombra al texto */
+}
+
+.hero-points {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.hero-points li {
+  margin-bottom: 10px;
+  font-size: 1.5rem; /* Aumentar el tamaño de la fuente de los puntos */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Añadir sombra al texto */
+}
+
+.cta-button {
+  background: #007bff;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.image-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
     text-align: center;
-    padding: 100px 0;
+    padding: 50px 20px;
   }
-  
-  .cta-button {
+  .hero-content {
+    flex-direction: column;
+  }
+  .text-content h1 {
+    font-size: 3rem;
+  }
+  .text-content p,
+  .hero-points li {
+    font-size: 1.5rem;
+  }
+  .image-content {
     margin-top: 20px;
   }
-  
+}

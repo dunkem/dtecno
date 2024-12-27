@@ -4,15 +4,33 @@ import './HeroSection.css';
 
 function HeroSection() {
   return (
-    <section className="hero" id="hero">
+    <section className="hero section" id="hero">
       <motion.div
+        className="hero-content"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <h1>Desarrollo de Páginas Web Modernas</h1>
-        <p>Diseños atractivos y funcionales que destacan en el mercado.</p>
-        <button className="cta-button">Descubre Más</button>
+        <div className="text-content">
+          <h1>Transforma Tu Presencia en Línea</h1>
+          <p>Impulsamos tu negocio con sitios web que atraen, convierten y destacan en el mercado.</p>
+          <ul className="hero-points">
+            <li>💻 <strong>Diseño Web Profesional:</strong> Creados desde cero, sin plantillas.</li>
+            <li>🎯 <strong>Garantía de Satisfacción:</strong> Nuestro compromiso es que estés 100% satisfecho.</li>
+            <li>✨ <strong>Orgullo en Tu Página Web:</strong> Te sentirás orgulloso de tu presencia en línea.</li>
+            <li>📞 <strong>Comunícate por WhatsApp:</strong> Estamos aquí para ayudarte en cada paso.</li>         
+          </ul>
+          <motion.button 
+            className="cta-button"
+            whileHover={{ scale: 1.1, backgroundColor: "#0056b3" }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            Descubre Más
+          </motion.button>
+        </div>
+        <div className="image-content">
+          <img src={`${process.env.PUBLIC_URL}/hero.jpg`} alt="Hero" className="hero-image" />
+        </div>
       </motion.div>
     </section>
   );
