@@ -2,30 +2,33 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: 'Arial, sans-serif';
-  color: #333;
+  color: #fff; /* Cambiado a blanco para mejor visibilidad en fondos oscuros */
+  background-color: #282c34; /* Fondo oscuro para toda la página */
   height: 100%;
   width: 100%;
+  line-height: 1.6; /* Mejora la legibilidad del texto */
 }
 
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 15px; /* Espaciado lateral */
 }
 
 button {
   cursor: pointer;
   border: none;
-  background: #007bff;
-  color: #fff;
+  background: #007bff; /* Color del botón */
+  color: #fff; /* Color del texto del botón */
   padding: 10px 20px;
   border-radius: 5px;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s; /* Efectos de transición */
 }
 
 button:hover {
-  background: #0056b3;
+  background: #0056b3; /* Color del botón al pasar el mouse */
+  transform: scale(1.05); /* Efecto de crecimiento al pasar el mouse */
 }
 
 .App {
@@ -35,7 +38,21 @@ button:hover {
 }
 
 .section {
-  margin: 20px;
+  margin: 20px 0; /* Espaciado entre secciones */
   padding: 20px;
   border-radius: 10px;
+  background-color: transparent; /* Fondo transparente para secciones */
+  box-shadow: none; /* Sin sombra para mantener un diseño limpio */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .section {
+    margin: 10px; /* Espaciado reducido en pantallas pequeñas */
+    padding: 15px; /* Padding reducido en pantallas pequeñas */
+  }
+
+  button {
+    padding: 8px 16px; /* Tamaño de botón más pequeño */
+  }
 }

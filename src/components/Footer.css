@@ -1,12 +1,12 @@
 .footer {
-  background: transparent; /* Hacer el fondo transparente */
+  background: transparent; /* Fondo transparente */
   padding: 1rem 0;
   text-align: center;
   position: relative;
   bottom: 0;
   width: 100%;
-  color: #fff; /* Cambiar el color de texto a blanco para mejor visibilidad */
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Añadir sombra al texto para mejor contraste */
+  color: #fff; /* Color de texto blanco para mejor visibilidad */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Sombra al texto para mejor contraste */
 }
 
 .footer-container {
@@ -42,7 +42,7 @@
 }
 
 .social-links a:hover {
-  color: #007bff;
+  color: #007bff; /* Color al pasar el mouse */
   transform: scale(1.1);
 }
 
@@ -57,6 +57,6 @@
   }
 
   .social-links a {
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Tamaño reducido en móviles */
   }
 }

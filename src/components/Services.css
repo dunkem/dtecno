@@ -2,6 +2,7 @@
   text-align: center;
   padding: 50px 0;
   color: #fff;
+  background-color: #282c34; /* Fondo para mayor contraste */
 }
 
 .services-container {
@@ -81,4 +82,18 @@
 .whatsapp-icon {
   width: 20px;
   height: 20px;
+}
+
+@media (max-width: 768px) {
+  .service-item h3 {
+    font-size: 1.5rem;
+  }
+
+  .service-item p {
+    font-size: 1.2rem;
+  }
+
+  .highlights ul {
+    font-size: 1.2rem;
+  }
 }

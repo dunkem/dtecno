@@ -5,44 +5,33 @@ import './Services.css';
 
 function Services() {
   return (
-    <section className="services section" id="services">
+    <section className="services section" id="servicios" aria-label="Nuestros Servicios">
       <h2>Nuestros Servicios</h2>
       <div className="services-container">
-        <motion.div
-          className="service-item"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <img src={`${process.env.PUBLIC_URL}/webdev.jpg`} alt="Desarrollo Web" className="service-image"/>
-          <h3>Desarrollo Web</h3>
-          <p>Creamos sitios web impresionantes y funcionales.</p>
-        </motion.div>
-        <motion.div
-          className="service-item"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <img src={`${process.env.PUBLIC_URL}/uxui.jpg`} alt="Diseño UX/UI" className="service-image"/>
-          <h3>Diseño UX/UI</h3>
-          <p>Experiencias de usuario intuitivas y atractivas.</p>
-        </motion.div>
-        <motion.div
-          className="service-item"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          <img src={`${process.env.PUBLIC_URL}/seo.jpg`} alt="SEO" className="service-image"/>
-          <h3>SEO</h3>
-          <p>Optimización para motores de búsqueda para mayor visibilidad.</p>
-        </motion.div>
+        {[
+          { img: 'webdev.jpg', title: 'Desarrollo Web', desc: 'Creamos sitios web impresionantes y funcionales.' },
+          { img: 'uxui.jpg', title: 'Diseño UX/UI', desc: 'Experiencias de usuario intuitivas y atractivas.' },
+          { img: 'seo.jpg', title: 'SEO', desc: 'Optimización para motores de búsqueda para mayor visibilidad.' }
+        ].map((service, index) => (
+          <motion.div
+            key={index}
+            className="service-item"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 + index * 0.2 }}
+            aria-label={`Servicio de ${service.title}`}
+          >
+            <img src={`${process.env.PUBLIC_URL}/${service.img}`} alt={service.title} className="service-image"/>
+            <h3>{service.title}</h3>
+            <p>{service.desc}</p>
+          </motion.div>
+        ))}
       </div>
 
       <h2>Tené tu Sitio Web en 15 días hábiles</h2>
       <p>Optimizado para obtener clientes. Experiencia óptima para el usuario.</p>
       <p>Nos apasiona desarrollar páginas web únicas, intuitivas, y que generan resultados. Personalizada para tu empresa, segura, y optimizada para convertir visitantes en clientes.</p>
+
       <div className="highlights">
         <div className="column">
           <ul>
@@ -65,7 +54,8 @@ function Services() {
           </ul>
         </div>
       </div>
-      <a href="https://wa.me/xxxxxxxxxx" className="cta-button">
+
+      <a href="https://wa.me/1159097342" className="cta-button" aria-label="Solicitar presupuesto por WhatsApp">
         <FaWhatsapp className="whatsapp-icon" /> Solicita Tu Presupuesto
       </a>
     </section>

@@ -4,7 +4,7 @@ import './HeroSection.css';
 
 function HeroSection() {
   return (
-    <section className="hero section" id="hero">
+    <section className="hero section" id="inicio" aria-label="Sección de héroe">
       <motion.div
         className="hero-content"
         initial={{ opacity: 0, y: -50 }}
@@ -18,18 +18,20 @@ function HeroSection() {
             <li>💻 <strong>Diseño Web Profesional:</strong> Creados desde cero, sin plantillas.</li>
             <li>🎯 <strong>Garantía de Satisfacción:</strong> Nuestro compromiso es que estés 100% satisfecho.</li>
             <li>✨ <strong>Orgullo en Tu Página Web:</strong> Te sentirás orgulloso de tu presencia en línea.</li>
-            <li>📞 <strong>Comunícate por WhatsApp:</strong> Estamos aquí para ayudarte en cada paso.</li>         
+            <li>📞 <strong>Comunícate por WhatsApp:</strong> Estamos aquí para ayudarte en cada paso.</li>
           </ul>
           <motion.button 
             className="cta-button"
             whileHover={{ scale: 1.1, backgroundColor: "#0056b3" }}
             transition={{ type: "spring", stiffness: 300 }}
+            onClick={() => window.location.href = '#contacto'} // Redirige al formulario de contacto
+            aria-label="Descubre más sobre nuestros servicios"
           >
             Descubre Más
           </motion.button>
         </div>
         <div className="image-content">
-          <img src={`${process.env.PUBLIC_URL}/hero.jpg`} alt="Hero" className="hero-image" />
+          <img src={`${process.env.PUBLIC_URL}/hero.jpg`} alt="Diseño web moderno y atractivo" className="hero-image" />
         </div>
       </motion.div>
     </section>

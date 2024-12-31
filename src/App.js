@@ -5,7 +5,7 @@ import Services from './components/Services';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import { FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp, FaFacebook, FaInstagram } from 'react-icons/fa';
 import './App.css';
 
 function App() {
@@ -39,6 +39,15 @@ function App() {
     height: '30px',
   };
 
+  const socialMediaStyle = {
+    position: 'fixed',
+    bottom: '100px',
+    right: '20px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '10px',
+  };
+
   return (
     <div className="App" style={appStyle}>
       <Navbar />
@@ -54,9 +63,18 @@ function App() {
         rel="noopener noreferrer"
         onMouseEnter={(e) => e.currentTarget.style.background = '#128C7E'}
         onMouseLeave={(e) => e.currentTarget.style.background = '#25D366'}
+        aria-label="Contactar por WhatsApp"
       >
         <FaWhatsapp style={whatsappIconStyle} />
       </a>
+      <div style={socialMediaStyle}>
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ color: '#3b5998' }} aria-label="Ir a Facebook">
+          <FaFacebook size={30} />
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={{ color: '#C13584' }} aria-label="Ir a Instagram">
+          <FaInstagram size={30} />
+        </a>
+      </div>
     </div>
   );
 }

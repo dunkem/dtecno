@@ -1,12 +1,13 @@
 .projects {
   padding: 60px 20px;
   text-align: center;
+  background-color: #282c34; /* Fondo para mayor contraste */
 }
 
 .projects h2 {
   font-size: 2.5rem;
   margin-bottom: 40px;
-  color: #ffffff; /* Color del título en blanco */
+  color: #ffffff;
 }
 
 .projects-container {
@@ -43,7 +44,7 @@
 
 .project-info {
   padding: 20px;
-  color: white; /* Texto en blanco */
+  color: white;
 }
 
 .project-info h3 {
@@ -53,4 +54,18 @@
 
 .project-info p {
   font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .projects h2 {
+    font-size: 2rem;
+  }
+
+  .project-info h3 {
+    font-size: 1.25rem;
+  }
+
+  .project-info p {
+    font-size: 0.9rem;
+  }
 }

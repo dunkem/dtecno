@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #282c34;
   padding: 15px 30px;
   position: relative;
   z-index: 10;
@@ -30,20 +29,20 @@
   top: 60px;
   left: 0;
   right: 0;
-  background-color: #282c34;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.custom-nav-item {
-  margin: 10px 0;
 }
 
 .custom-nav-item a {
   text-decoration: none;
   color: white;
   font-weight: bold;
+  transition: color 0.3s;
+}
+
+.custom-nav-item a:hover {
+  color: #61dafb;
 }
 
 @media (max-width: 768px) {
@@ -51,5 +50,9 @@
     display: none;
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .custom-nav-links.open {
+    display: flex;
   }
 }
