@@ -24,14 +24,19 @@ function HeroSection() {
             className="cta-button"
             whileHover={{ scale: 1.1, backgroundColor: "#0056b3" }}
             transition={{ type: "spring", stiffness: 300 }}
-            onClick={() => window.location.href = '#contacto'} // Redirige al formulario de contacto
+            onClick={() => window.location.href = '#contacto'}
             aria-label="Descubre más sobre nuestros servicios"
           >
             Descubre Más
           </motion.button>
         </div>
         <div className="image-content">
-          <img src={`${process.env.PUBLIC_URL}/hero.jpg`} alt="Diseño web moderno y atractivo" className="hero-image" />
+          <img 
+            src={`${process.env.PUBLIC_URL}/hero.jpg`} 
+            alt="Diseño web moderno y atractivo" 
+            className="hero-image large-image" 
+            loading="lazy" // Mejora el rendimiento al cargar la imagen
+          />
         </div>
       </motion.div>
     </section>

@@ -68,10 +68,10 @@ function App() {
         <FaWhatsapp style={whatsappIconStyle} />
       </a>
       <div style={socialMediaStyle}>
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ color: '#3b5998' }} aria-label="Ir a Facebook">
+        <a href="https://facebook.com/dtecno1" target="_blank" rel="noopener noreferrer" style={{ color: '#3b5998' }} aria-label="Ir a Facebook">
           <FaFacebook size={30} />
         </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={{ color: '#C13584' }} aria-label="Ir a Instagram">
+        <a href="https://www.instagram.com/dtecno1" target="_blank" rel="noopener noreferrer" style={{ color: '#C13584' }} aria-label="Ir a Instagram">
           <FaInstagram size={30} />
         </a>
       </div>

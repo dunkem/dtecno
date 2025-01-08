@@ -1,3 +1,5 @@
+/* HeroSection.css */
+
 .hero {
   display: flex;
   align-items: center;
@@ -5,66 +7,77 @@
   padding: 100px 20px;
   color: #fff;
   background-color: #282c34; /* Fondo para mayor contraste */
+  animation: fadeIn 2s ease-in-out; /* Añade una animación de entrada */
 }
 
 .hero-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: 1400px; /* Aumenta el ancho máximo */
   width: 100%;
-  gap: 20px;
+  gap: 40px; /* Aumenta el espacio entre el contenido */
 }
 
 .text-content {
   flex: 1;
+  text-align: left; /* Alinea el texto a la izquierda para mejor lectura */
+  animation: slideIn 2s ease-in-out; /* Añade una animación de entrada para el texto */
 }
 
 .text-content h1 {
-  font-size: 4rem;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 4.5rem; /* Aumenta el tamaño del título */
+  margin-bottom: 30px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Mejora el efecto de sombra */
 }
 
 .text-content p {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 2.2rem; /* Aumenta el tamaño del párrafo */
+  margin-bottom: 30px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Mejora el efecto de sombra */
 }
 
 .hero-points {
   list-style: none;
   padding: 0;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .hero-points li {
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  margin-bottom: 15px;
+  font-size: 1.8rem; /* Aumenta el tamaño del texto de los puntos */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* Añade sombra al texto */
 }
 
 .cta-button {
-  background: #007bff;
+  background: #ff6600; /* Cambia el color del botón para mayor impacto */
   color: #fff;
-  padding: 15px 30px;
+  padding: 20px 40px; /* Aumenta el tamaño del botón */
   border: none;
-  border-radius: 5px;
+  border-radius: 10px; /* Mejora la redondez de las esquinas */
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.4rem; /* Aumenta el tamaño del texto del botón */
   transition: transform 0.3s, background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #e65c00; /* Cambia el color al hacer hover */
+  transform: scale(1.05); /* Añade un efecto de escala al hacer hover */
 }
 
 .image-content {
   flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center; /* Centra verticalmente la imagen */
+  animation: slideIn 2s ease-in-out; /* Añade una animación de entrada */
 }
 
 .hero-image {
   width: 100%;
-  max-width: 500px;
-  border-radius: 10px;
+  max-width: 800px; /* Aumenta el tamaño máximo de la imagen */
+  border-radius: 15px; /* Mejora la redondez de las esquinas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Añade sombra a la imagen */
 }
 
 @media (max-width: 768px) {
@@ -75,15 +88,27 @@
   }
   .hero-content {
     flex-direction: column;
+    gap: 20px; /* Ajusta el espacio en pantallas pequeñas */
   }
   .text-content h1 {
-    font-size: 3rem;
+    font-size: 3.5rem; /* Ajusta el tamaño del título en pantallas pequeñas */
   }
   .text-content p,
   .hero-points li {
-    font-size: 1.5rem;
+    font-size: 1.8rem; /* Ajusta el tamaño del texto en pantallas pequeñas */
   }
   .image-content {
     margin-top: 20px;
   }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
 }

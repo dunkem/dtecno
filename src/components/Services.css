@@ -1,6 +1,8 @@
+/* Services.css */
+
 .services {
   text-align: center;
-  padding: 50px 0;
+  padding: 50px 20px;
   color: #fff;
   background-color: #282c34; /* Fondo para mayor contraste */
 }
@@ -15,6 +17,7 @@
 .service-item {
   max-width: 300px;
   text-align: center;
+  transition: transform 0.3s ease; /* Añade transición suave */
 }
 
 .service-image {
@@ -42,6 +45,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  margin-top: 40px; /* Espacio adicional entre secciones */
 }
 
 .column {
@@ -60,7 +64,7 @@
 }
 
 .cta-button {
-  background: #25D366;
+  background: #25D366; /* Color de WhatsApp */
   color: #fff;
   padding: 15px 30px;
   border: none;
@@ -72,10 +76,11 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none; /* Elimina el subrayado */
 }
 
 .cta-button:hover {
-  background: #128C7E;
+  background: #128C7E; /* Color de hover */
   transform: scale(1.05);
 }
 
@@ -86,14 +91,14 @@
 
 @media (max-width: 768px) {
   .service-item h3 {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Tamaño de fuente responsivo */
   }
 
   .service-item p {
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Tamaño de fuente responsivo */
   }
 
   .highlights ul {
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Tamaño de fuente responsivo */
   }
 }

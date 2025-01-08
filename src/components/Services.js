@@ -21,14 +21,19 @@ function Services() {
             transition={{ duration: 0.5, delay: 0.2 + index * 0.2 }}
             aria-label={`Servicio de ${service.title}`}
           >
-            <img src={`${process.env.PUBLIC_URL}/${service.img}`} alt={service.title} className="service-image"/>
+            <img 
+              src={`${process.env.PUBLIC_URL}/${service.img}`} 
+              alt={`Servicio de ${service.title}`} 
+              className="service-image" 
+              loading="lazy" // Mejora el rendimiento
+            />
             <h3>{service.title}</h3>
             <p>{service.desc}</p>
           </motion.div>
         ))}
       </div>
 
-      <h2>Tené tu Sitio Web en 15 días hábiles</h2>
+      <h2>Tené tu Sitio Web en 15 Días Hábiles</h2>
       <p>Optimizado para obtener clientes. Experiencia óptima para el usuario.</p>
       <p>Nos apasiona desarrollar páginas web únicas, intuitivas, y que generan resultados. Personalizada para tu empresa, segura, y optimizada para convertir visitantes en clientes.</p>
 
@@ -48,7 +53,7 @@ function Services() {
             <li>🔒 <strong>Seguridad web avanzada</strong></li>
             <li>🔧 <strong>Sitio Web Autoadministrable (Panel para agregar y modificar información)</strong></li>
             <li>🔄 <strong>Cambios y Revisiones Ilimitadas</strong></li>
-            <li>🌐 <strong>Web Hosting Premium - Gratis Por 1 Año!</strong></li>
+            <li>🌐 <strong>Web Hosting Premium - Gratis por 1 Año!</strong></li>
             <li>📧 <strong>Cuentas de correo corporativas</strong></li>
             <li>💬 <strong>Integración con WhatsApp</strong></li>
           </ul>
