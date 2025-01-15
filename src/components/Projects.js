@@ -4,9 +4,9 @@ import './Projects.css';
 
 function Projects() {
   const projects = [
-    { title: "Daromsa", description: "Visita el sitio de Darom SA", imageUrl: "darom.png", link: "https://daromsa.com.ar" },
-    { title: "Proyecto 2", description: "Descripción del proyecto 2", imageUrl: "URL_de_tu_imagen_2", link: "https://tusitio2.netlify.app" },
-    { title: "Proyecto 3", description: "Descripción del proyecto 3", imageUrl: "URL_de_tu_imagen_3", link: "https://tusitio3.netlify.app" },
+    { title: "Darom SA", description: "Visita el sitio", imageUrl: "darom.png", link: "https://daromsa.com.ar" },
+    { title: "Dietetica San Rudecindo", description: "Visita el sitio", imageUrl: "dieteticasanrudecindo.png", link: "https://dieteticasanrudecindo.netlify.app/" },
+    { title: "M y D Muebles", description: "Visita el sitio", imageUrl: "muebleria.png", link: "https://mydmuebles.netlify.app/" },
   ];
 
   return (

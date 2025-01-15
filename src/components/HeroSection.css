@@ -1,10 +1,8 @@
-/* HeroSection.css */
-
 .hero {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 100px 20px;
+  padding: 120px 30px; /* Ajusta el padding superior aquí si es necesario */
   color: #fff;
   background-color: #282c34; /* Fondo para mayor contraste */
   animation: fadeIn 2s ease-in-out; /* Añade una animación de entrada */
@@ -16,23 +14,24 @@
   justify-content: space-between;
   max-width: 1400px; /* Aumenta el ancho máximo */
   width: 100%;
-  gap: 40px; /* Aumenta el espacio entre el contenido */
+  gap: 50px; /* Aumenta el espacio entre el contenido */
 }
 
 .text-content {
   flex: 1;
   text-align: left; /* Alinea el texto a la izquierda para mejor lectura */
   animation: slideIn 2s ease-in-out; /* Añade una animación de entrada para el texto */
+  margin-top: 0; /* Ajusta el margen superior */
 }
 
 .text-content h1 {
-  font-size: 4.5rem; /* Aumenta el tamaño del título */
+  font-size: 3.5rem; /* Tamaño ajustado del título */
   margin-bottom: 30px;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Mejora el efecto de sombra */
 }
 
 .text-content p {
-  font-size: 2.2rem; /* Aumenta el tamaño del párrafo */
+  font-size: 2rem; /* Tamaño ajustado del párrafo */
   margin-bottom: 30px;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Mejora el efecto de sombra */
 }
@@ -45,7 +44,7 @@
 
 .hero-points li {
   margin-bottom: 15px;
-  font-size: 1.8rem; /* Aumenta el tamaño del texto de los puntos */
+  font-size: 1.5rem; /* Tamaño ajustado del texto de los puntos */
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* Añade sombra al texto */
 }
 
@@ -78,31 +77,9 @@
   max-width: 800px; /* Aumenta el tamaño máximo de la imagen */
   border-radius: 15px; /* Mejora la redondez de las esquinas */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Añade sombra a la imagen */
+  animation: zoomInOut 4s infinite; /* Añade la animación de acercamiento y alejamiento */
 }
 
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    padding: 50px 20px;
-  }
-  .hero-content {
-    flex-direction: column;
-    gap: 20px; /* Ajusta el espacio en pantallas pequeñas */
-  }
-  .text-content h1 {
-    font-size: 3.5rem; /* Ajusta el tamaño del título en pantallas pequeñas */
-  }
-  .text-content p,
-  .hero-points li {
-    font-size: 1.8rem; /* Ajusta el tamaño del texto en pantallas pequeñas */
-  }
-  .image-content {
-    margin-top: 20px;
-  }
-}
-
-/* Animaciones */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -111,4 +88,38 @@
 @keyframes slideIn {
   from { transform: translateX(-50%); }
   to { transform: translateX(0); }
+}
+
+@keyframes zoomInOut {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1); /* Ajusta la escala según prefieras */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 100px 20px; /* Incrementa el padding superior en dispositivos móviles */
+  }
+  .hero-content {
+    flex-direction: column;
+    gap: 20px; /* Ajusta el espacio en pantallas pequeñas */
+  }
+  .text-content {
+    margin-top: 50px; /* Añade margen superior para crear espacio */
+  }
+  .text-content h1 {
+    font-size: 3rem; /* Ajusta el tamaño del título en pantallas pequeñas */
+  }
+  .text-content p,
+  .hero-points li {
+    font-size: 1.5rem; /* Ajusta el tamaño del texto en pantallas pequeñas */
+  }
+  .image-content {
+    margin-top: 20px;
+  }
 }

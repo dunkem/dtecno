@@ -24,8 +24,8 @@ function App() {
     background: '#25D366',
     color: 'white',
     borderRadius: '50%',
-    width: '60px',
-    height: '60px',
+    width: '80px',  // Agranda el ancho del botón
+    height: '80px', // Agranda la altura del botón
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -35,8 +35,8 @@ function App() {
   };
 
   const whatsappIconStyle = {
-    width: '30px',
-    height: '30px',
+    width: '40px', // Agranda el icono de WhatsApp
+    height: '40px', // Agranda el icono de WhatsApp
   };
 
   const socialMediaStyle = {
@@ -45,7 +45,11 @@ function App() {
     right: '20px',
     display: 'flex',
     flexDirection: 'column',
-    gap: '10px',
+    gap: '20px', // Ajusta el espacio entre los iconos sociales
+  };
+
+  const socialIconStyle = {
+    fontSize: '40px', // Agranda el tamaño de los iconos de redes sociales
   };
 
   return (
@@ -69,10 +73,10 @@ function App() {
       </a>
       <div style={socialMediaStyle}>
         <a href="https://facebook.com/dtecno1" target="_blank" rel="noopener noreferrer" style={{ color: '#3b5998' }} aria-label="Ir a Facebook">
-          <FaFacebook size={30} />
+          <FaFacebook style={socialIconStyle} />
         </a>
         <a href="https://www.instagram.com/dtecno1" target="_blank" rel="noopener noreferrer" style={{ color: '#C13584' }} aria-label="Ir a Instagram">
-          <FaInstagram size={30} />
+          <FaInstagram style={socialIconStyle} />
         </a>
       </div>
     </div>
