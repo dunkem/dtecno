@@ -1,10 +1,12 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import Services from './components/Services';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ItservicesPage from './components/ItservicesPage';
 import { FaWhatsapp, FaFacebook, FaInstagram } from 'react-icons/fa';
 import './App.css';
 
@@ -24,7 +26,7 @@ function App() {
     background: '#25D366',
     color: 'white',
     borderRadius: '50%',
-    width: '80px',  // Agranda el ancho del botón
+    width: '80px', // Agranda el ancho del botón
     height: '80px', // Agranda la altura del botón
     display: 'flex',
     alignItems: 'center',
@@ -53,33 +55,42 @@ function App() {
   };
 
   return (
-    <div className="App" style={appStyle}>
-      <Navbar />
-      <HeroSection />
-      <Services />
-      <Projects />
-      <Contact />
-      <Footer />
-      <a
-        href="https://wa.me/1159097342"
-        style={whatsappButtonStyle}
-        target="_blank"
-        rel="noopener noreferrer"
-        onMouseEnter={(e) => e.currentTarget.style.background = '#128C7E'}
-        onMouseLeave={(e) => e.currentTarget.style.background = '#25D366'}
-        aria-label="Contactar por WhatsApp"
-      >
-        <FaWhatsapp style={whatsappIconStyle} />
-      </a>
-      <div style={socialMediaStyle}>
-        <a href="https://facebook.com/dtecno1" target="_blank" rel="noopener noreferrer" style={{ color: '#3b5998' }} aria-label="Ir a Facebook">
-          <FaFacebook style={socialIconStyle} />
+    <Router>
+      <div className="App" style={appStyle}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <HeroSection />
+              <Services />
+              <Projects />
+              <Contact />
+            </>
+          } />
+          <Route path="/it-services" element={<ItservicesPage />} />
+        </Routes>
+        <Footer />
+        <a
+          href="https://wa.me/1159097342"
+          style={whatsappButtonStyle}
+          target="_blank"
+          rel="noopener noreferrer"
+          onMouseEnter={(e) => e.currentTarget.style.background = '#128C7E'}
+          onMouseLeave={(e) => e.currentTarget.style.background = '#25D366'}
+          aria-label="Contactar por WhatsApp"
+        >
+          <FaWhatsapp style={whatsappIconStyle} />
         </a>
-        <a href="https://www.instagram.com/dtecno1" target="_blank" rel="noopener noreferrer" style={{ color: '#C13584' }} aria-label="Ir a Instagram">
-          <FaInstagram style={socialIconStyle} />
-        </a>
+        <div style={socialMediaStyle}>
+          <a href="https://facebook.com/dtecno1" target="_blank" rel="noopener noreferrer" style={{ color: '#3b5998' }} aria-label="Ir a Facebook">
+            <FaFacebook style={socialIconStyle} />
+          </a>
+          <a href="https://www.instagram.com/dtecno1" target="_blank" rel="noopener noreferrer" style={{ color: '#C13584' }} aria-label="Ir a Instagram">
+            <FaInstagram style={socialIconStyle} />
+          </a>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 

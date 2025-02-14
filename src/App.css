@@ -1,51 +1,51 @@
+/* Estilos globales */
 body, html {
   margin: 0;
   padding: 0;
   font-family: 'Arial, sans-serif';
-  color: #fff; /* Cambiado a blanco para mejor visibilidad en fondos oscuros */
-  background-color: #282c34; /* Fondo oscuro para toda la página */
+  color: #fff;
+  background-color: #282c34;
   height: 100%;
   width: 100%;
-  line-height: 1.6; /* Mejora la legibilidad del texto */
+  line-height: 1.6;
 }
 
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px; /* Espaciado lateral */
+  padding: 0 15px;
 }
 
 button {
   cursor: pointer;
   border: none;
-  background: #007bff; /* Color del botón */
-  color: #fff; /* Color del texto del botón */
-  padding: 15px 30px; /* Agranda el tamaño del botón */
+  background: #007bff;
+  color: #fff;
+  padding: 15px 30px;
   border-radius: 5px;
-  transition: background 0.3s, transform 0.2s; /* Efectos de transición */
+  transition: background 0.3s, transform 0.2s;
 }
 
 button:hover {
-  background: #0056b3; /* Color del botón al pasar el mouse */
-  transform: scale(1.05); /* Efecto de crecimiento al pasar el mouse */
+  background: #0056b3;
+  transform: scale(1.05);
 }
 
-/* Estilos para botones de WhatsApp y redes sociales */
 .whatsapp-button, .social-button {
   cursor: pointer;
   border: none;
-  background: #25D366; /* Color del botón de WhatsApp */
-  color: #fff; /* Color del texto del botón */
-  padding: 15px 30px; /* Agranda el tamaño del botón */
-  border-radius: 10px; /* Mejora la redondez de las esquinas */
-  transition: background 0.3s, transform 0.2s; /* Efectos de transición */
-  margin: 10px; /* Espaciado entre botones */
+  background: #25D366;
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 10px;
+  transition: background 0.3s, transform 0.2s;
+  margin: 10px;
 }
 
 .whatsapp-button:hover, .social-button:hover {
-  background: #128C7E; /* Color del botón de WhatsApp al pasar el mouse */
-  transform: scale(1.05); /* Efecto de crecimiento al pasar el mouse */
+  background: #128C7E;
+  transform: scale(1.05);
 }
 
 .App {
@@ -55,25 +55,24 @@ button:hover {
 }
 
 .section {
-  margin: 20px 0; /* Espaciado entre secciones */
+  margin: 20px 0;
   padding: 20px;
   border-radius: 10px;
-  background-color: transparent; /* Fondo transparente para secciones */
-  box-shadow: none; /* Sin sombra para mantener un diseño limpio */
+  background-color: transparent;
+  box-shadow: none;
 }
 
-/* Estilos responsivos */
 @media (max-width: 768px) {
   .section {
-    margin: 10px; /* Espaciado reducido en pantallas pequeñas */
-    padding: 15px; /* Padding reducido en pantallas pequeñas */
+    margin: 10px;
+    padding: 15px;
   }
 
   button {
-    padding: 12px 24px; /* Ajusta el tamaño de botón en pantallas pequeñas */
+    padding: 12px 24px;
   }
 
   .whatsapp-button, .social-button {
-    padding: 12px 24px; /* Ajusta el tamaño de los botones de WhatsApp y redes en pantallas pequeñas */
+    padding: 12px 24px;
   }
 }

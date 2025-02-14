@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 function Navbar() {
@@ -12,6 +13,14 @@ function Navbar() {
 
   const closeMenu = () => {
     setIsOpen(false);
+  };
+
+  const handleScrollToSection = (section) => {
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    closeMenu();
   };
 
   return (
@@ -34,19 +43,56 @@ function Navbar() {
         {isOpen ? <FaTimes aria-hidden="true" /> : <FaBars aria-hidden="true" />}
       </button>
       <ul className={`navbar-links ${isOpen ? 'open' : ''}`} role="menu">
-        {['INICIO', 'SERVICIOS', 'PROYECTOS', 'CONTACTO'].map((item, index) => (
-          <motion.li
-            key={index}
-            className="navbar-item"
-            whileHover={{ scale: 1.1, color: "#007bff" }}
-            transition={{ type: "spring", stiffness: 300 }}
-            role="none"
-          >
-            <a href={`#${item.toLowerCase()}`} onClick={closeMenu} className="navbar-link" role="menuitem" aria-label={`Ir a ${item}`}>
-              {item}
-            </a>
-          </motion.li>
-        ))}
+        <motion.li
+          className="navbar-item"
+          whileHover={{ scale: 1.1, color: "#007bff" }}
+          transition={{ type: "spring", stiffness: 300 }}
+          role="none"
+        >
+          <Link to="/" onClick={() => handleScrollToSection('inicio')} className="navbar-link" role="menuitem" aria-label="Ir a INICIO">
+            INICIO
+          </Link>
+        </motion.li>
+        <motion.li
+          className="navbar-item"
+          whileHover={{ scale: 1.1, color: "#007bff" }}
+          transition={{ type: "spring", stiffness: 300 }}
+          role="none"
+        >
+          <Link to="/" onClick={() => handleScrollToSection('servicios')} className="navbar-link" role="menuitem" aria-label="Ir a SERVICIOS">
+            SERVICIOS
+          </Link>
+        </motion.li>
+        <motion.li
+          className="navbar-item"
+          whileHover={{ scale: 1.1, color: "#007bff" }}
+          transition={{ type: "spring", stiffness: 300 }}
+          role="none"
+        >
+          <Link to="/" onClick={() => handleScrollToSection('proyectos')} className="navbar-link" role="menuitem" aria-label="Ir a PROYECTOS">
+            PROYECTOS
+          </Link>
+        </motion.li>
+        <motion.li
+          className="navbar-item"
+          whileHover={{ scale: 1.1, color: "#007bff" }}
+          transition={{ type: "spring", stiffness: 300 }}
+          role="none"
+        >
+          <Link to="/" onClick={() => handleScrollToSection('contacto')} className="navbar-link" role="menuitem" aria-label="Ir a CONTACTO">
+            CONTACTO
+          </Link>
+        </motion.li>
+        <motion.li
+          className="navbar-item"
+          whileHover={{ scale: 1.1, color: "#007bff" }}
+          transition={{ type: "spring", stiffness: 300 }}
+          role="none"
+        >
+          <Link to="/it-services" className="navbar-link" role="menuitem" aria-label="Ir a SERVICIOS INFORMÁTICOS">
+            SERVICIOS INFORMÁTICOS
+          </Link>
+        </motion.li>
       </ul>
     </motion.nav>
   );
