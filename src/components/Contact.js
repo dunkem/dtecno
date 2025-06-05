@@ -15,7 +15,8 @@ function Contact() {
               <div className="info-icon">📞</div>
               <div>
                 <h4>Teléfono</h4>
-                <p>11 5909-7342</p>
+                <p>011-5909-7342</p>
+                <p>011-2489-2490</p>
               </div>
             </div>
             
@@ -23,7 +24,7 @@ function Contact() {
               <div className="info-icon">✉️</div>
               <div>
                 <h4>Email</h4>
-                <p>info@tudominio.com</p>
+                <p>info.dtecno@gmail.com</p>
               </div>
             </div>
             

@@ -9,19 +9,19 @@ const HeroSection = () => {
         <p className="subtitle">Expertos en resolver tus problemas informáticos con soluciones rápidas, efectivas y a precios competitivos</p>
         
         <div className="hero-buttons">
-          <a href="#contact" className="cta-button primary">Solicitar Servicio</a>
+          <a href="https://api.whatsapp.com/send/?phone=1159097342&text&type=phone_number&app_absent=0" className="cta-button primary">Solicitar Servicio</a>
           <a href="#services" className="cta-button secondary">Ver Servicios</a>
         </div>
         
         <div className="trust-badges">
           <div className="badge">
             <div className="stars">
-              {[...Array(5)].map((_, i) => <span key={i}>★</span>)}
+              {[...Array(1)].map((_, i) => <span key={i}>★★★★★</span>)}
             </div>
             <span>4.9/5 en Google</span>
           </div>
           <div className="badge">
-            <span>+1000</span>
+            <span>+100</span>
             <span>Clientes satisfechos</span>
           </div>
           <div className="badge">

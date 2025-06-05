@@ -1,93 +1,176 @@
-/* Navbar.css */
-
-body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #282c34;
-  color: #fff;
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --primary-light: #3b82f6;
+  --text: #1f2937;
+  --text-light: #6b7280;
+  --background: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
 }
 
+/* Navbar Principal */
 .navbar {
+  background-color: var(--background);
+  box-shadow: var(--shadow);
+  position: relative;
+  z-index: 1000;
+  width: 100%;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.8rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
-  background-color: rgba(40, 44, 52, 0.8);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  transition: background-color 0.3s;
-}
-
-.navbar-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Centra el logo */
-  flex: 1; /* Permite que el logo use el espacio */
-  margin-left: -10px; /* Mueve el logo ligeramente hacia la izquierda en móviles */
 }
 
 .navbar-logo-image {
-  height: 70px; /* Aumenta el tamaño del logo */
-  margin-right: 20px; /* Espacio entre el logo y el menú */
+  height: 50px;
+  cursor: pointer;
+  transition: var(--transition);
 }
 
+.navbar-logo-image:hover {
+  transform: scale(1.05);
+}
+
+/* Menú Hamburguesa */
 .navbar-menu-icon {
   background: none;
   border: none;
-  font-size: 30px;
-  color: #fff;
+  color: var(--primary);
+  font-size: 1.8rem;
   cursor: pointer;
-  display: none; /* Oculta en pantallas grandes */
-  margin-right: 60px; /* Añade espacio a la derecha del ícono */
+  display: none;
+  z-index: 1001;
+  transition: var(--transition);
+}
+
+.navbar-menu-icon:hover {
+  color: var(--primary-dark);
+}
+
+/* Contenido del Navbar */
+.navbar-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .navbar-links {
-  list-style-type: none;
   display: flex;
-  justify-content: center; /* Centra los ítems del menú */
-  gap: 20px;
+  list-style: none;
   margin: 0;
-  flex: 2; /* Permite que los enlaces usen el espacio disponible */
-}
-
-.navbar-links.open {
-  display: block; /* Muestra el menú al abrir */
-  position: absolute;
-  top: 60px; /* Ajusta según la altura de la navbar */
-  left: 0;
-  right: 0;
-  background-color: rgba(40, 44, 52, 0.9);
-  padding: 15px 0;
-  border-radius: 5px;
+  padding: 0;
+  gap: 1.5rem;
 }
 
 .navbar-item {
-  padding: 10px 15px;
+  position: relative;
 }
 
 .navbar-link {
+  color: var(--text);
   text-decoration: none;
-  color: #fff;
-  font-weight: bold;
-  transition: color 0.3s;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: var(--transition);
 }
 
 .navbar-link:hover {
-  color: #61dafb;
+  color: var(--primary);
 }
 
-@media (max-width: 768px) {
-  .navbar-menu-icon {
-    display: block; /* Muestra el ícono en pantallas pequeñas */
-    margin-left: 60px; /* Mueve el ícono hamburguesa hacia la izquierda */
-  }
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
 
+.navbar-link:hover::after {
+  width: 100%;
+}
+
+/* Acciones y Redes Sociales */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icon {
+  color: var(--text-light);
+  font-size: 1.1rem;
+  transition: var(--transition);
+}
+
+.social-icon:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+
+/* Versión Mobile */
+@media (max-width: 992px) {
+  .navbar-menu-icon {
+    display: block;
+  }
+  
+  .navbar-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--background);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease-in-out;
+    z-index: 1000;
+    padding: 2rem;
+  }
+  
+  .navbar-content.open {
+    transform: translateY(0);
+  }
+  
   .navbar-links {
-    display: none; /* Esconde el menú por defecto en móviles */
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    gap: 2rem;
   }
+  
+  .navbar-link {
+    font-size: 1.2rem;
+  }
+  
+  .navbar-actions {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .social-links {
+    order: 2;
+  }
+  
+  
 }
