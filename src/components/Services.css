@@ -1,244 +1,187 @@
-.services-section {
-  padding: 5rem 5%;
-  background: linear-gradient(to bottom, #0a0e17 0%, #1a1f2e 100%);
-  color: white;
+/* Estilos base */
+.dtecno-services-section {
+  padding: 5rem 0;
+  background-color: #0a0a0a;
+  color: #fff;
   position: relative;
-  overflow: hidden;
 }
 
-.section-header {
+.dtecno-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Encabezado */
+.dtecno-section-header {
   text-align: center;
   margin-bottom: 4rem;
 }
 
-.section-header h2 {
-  font-size: 2.8rem;
-  margin-bottom: 1rem;
-  font-weight: 800;
+.dtecno-section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+  font-weight: 700;
 }
 
-.highlight {
-  color: #4facfe;
-  position: relative;
+.dtecno-highlight {
+  color: #0a84ff;
 }
 
-.highlight::after {
-  content: '';
-  position: absolute;
-  bottom: 5px;
-  left: 0;
-  width: 100%;
-  height: 12px;
-  background: rgba(79, 172, 254, 0.3);
-  z-index: -1;
-  border-radius: 3px;
-}
-
-.section-subtitle {
+.dtecno-section-subtitle {
   font-size: 1.2rem;
-  color: #a1a8c3;
+  color: #ccc;
   max-width: 700px;
   margin: 0 auto;
 }
 
-.services-grid {
+/* Grid de servicios */
+.dtecno-services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: 4rem;
 }
 
-.service-card {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
+/* Tarjetas de servicio */
+.dtecno-service-card {
+  background: #111;
+  border-radius: 10px;
   padding: 2rem;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #222;
   transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  border-color: rgba(79, 172, 254, 0.3);
-}
-
-.service-icon-circle {
+.dtecno-service-icon-circle {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(79, 172, 254, 0.2) 0%, rgba(0, 242, 254, 0.2) 100%);
+  background: rgba(10, 132, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
+  margin: 0 auto 1.5rem auto;
 }
 
-.service-icon-svg {
+.dtecno-service-icon-svg {
   font-size: 1.8rem;
-  color: #4facfe;
+  color: #0a84ff;
 }
 
-.service-card h3 {
+.dtecno-service-title {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: white;
-  font-weight: 700;
+  text-align: center;
+  color: #fff;
 }
 
-.service-description {
-  color: #c9d1e9;
+.dtecno-service-description {
+  color: #bbb;
   margin-bottom: 1.5rem;
+  text-align: center;
   line-height: 1.6;
-  flex-grow: 1;
 }
 
-.service-features {
+.dtecno-service-features {
   list-style: none;
-  margin: 1.5rem 0;
   padding: 0;
+  margin-bottom: 2rem;
 }
 
-.service-features li {
+.dtecno-feature-item {
   margin-bottom: 0.8rem;
-  display: flex;
-  align-items: flex-start;
-  color: #f5f5f5;
-}
-
-.feature-icon {
-  color: #4facfe;
-  margin-right: 0.7rem;
-  font-size: 0.9rem;
-  margin-top: 0.2rem;
-}
-
-.service-button {
-  display: inline-block;
-  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  text-align: center;
-  margin-top: auto;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
-}
-
-.service-button:hover {
-  box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
-  transform: translateY(-2px);
-}
-
-.offer-banner {
-  background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
-  border-radius: 12px;
-  padding: 2rem;
-  text-align: center;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding-left: 1.8rem;
   position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(79, 172, 254, 0.3);
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
-.offer-banner::before {
-  content: '';
+.dtecno-feature-icon {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-  animation: rotate 15s linear infinite;
-  z-index: 0;
+  left: 0;
+  color: #0a84ff;
+  font-weight: bold;
 }
 
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.dtecno-service-button {
+  background: #0a84ff;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  display: block;
+  text-align: center;
 }
 
-.offer-content {
-  position: relative;
-  z-index: 1;
+/* Banner de oferta */
+.dtecno-offer-banner {
+  background: linear-gradient(135deg, rgba(10, 132, 255, 0.1) 0%, rgba(10, 10, 10, 0.8) 100%);
+  border-radius: 10px;
+  padding: 2.5rem;
+  border: 1px solid #222;
+  text-align: center;
 }
 
-.offer-banner h3 {
+.dtecno-offer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.dtecno-offer-title {
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  color: white;
+  color: #0a84ff;
 }
 
-.offer-banner p {
+.dtecno-offer-text {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
-  color: #e0e5f6;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  color: #ccc;
 }
 
-.offer-banner strong {
-  color: white;
-  font-weight: 700;
+.dtecno-offer-text strong {
+  color: #0a84ff;
 }
 
-.offer-button {
-  display: inline-block;
-  background: white;
-  color: #1e3c72;
+.dtecno-offer-button {
+  background: transparent;
+  color: #0a84ff;
+  border: 2px solid #0a84ff;
   padding: 0.8rem 2rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.offer-button:hover {
-  background: #f0f4ff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+.dtecno-offer-button:hover {
+  background: #0a84ff;
+  color: white;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .services-section {
-    padding: 3rem 5%;
+  .dtecno-section-title {
+    font-size: 2rem;
   }
   
-  .section-header h2 {
-    font-size: 2.2rem;
+  .dtecno-services-grid {
+    grid-template-columns: 1fr;
   }
   
-  .offer-banner {
+  .dtecno-offer-banner {
     padding: 1.5rem;
   }
   
-  .offer-banner h3 {
-    font-size: 1.4rem;
-  }
-  
-  .offer-banner p {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-header h2 {
-    font-size: 1.8rem;
-  }
-  
-  .service-card {
-    padding: 1.5rem;
-  }
-  
-  .service-card h3 {
-    font-size: 1.3rem;
+  .dtecno-offer-title {
+    font-size: 1.5rem;
   }
 }

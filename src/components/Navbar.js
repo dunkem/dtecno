@@ -37,6 +37,11 @@ function Navbar() {
     closeMenu();
   };
 
+  const handleWhatsAppClick = () => {
+    const message = encodeURIComponent("Hola, estoy interesado en los servicios de Dtecno. ¿Podrían brindarme más información?");
+    window.open(`https://wa.me/1159097342?text=${message}`, '_blank');
+  };
+
   return (
     <motion.nav
       className={`navbar ${scrolled ? 'scrolled' : ''}`}
@@ -50,8 +55,7 @@ function Navbar() {
           <img 
             src={`${process.env.PUBLIC_URL}/dtecnologo.png`} 
             alt="Dtecno Logo" 
-            className="navbar-logo-image" 
-            onClick={() => handleScrollToSection('inicio')}
+            className="navbar-logo-image"
           />
         </div>
 
@@ -70,7 +74,7 @@ function Navbar() {
 
         <div className={`navbar-content ${isOpen ? 'open' : ''}`}>
           <ul className="navbar-links" role="menu">
-            {['inicio', 'servicios', 'proyectos', 'contacto'].map((item) => (
+            {['servicios', 'proyectos'].map((item) => (
               <motion.li
                 key={item}
                 className="navbar-item"
@@ -125,28 +129,19 @@ function Navbar() {
               >
                 <FaInstagram />
               </motion.a>
-              <motion.a
-                href="https://api.whatsapp.com/send/?phone=1159097342" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                aria-label="WhatsApp"
-                className="social-icon whatsapp-icon"
-                whileHover={{ y: -3 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <FaWhatsapp />
-              </motion.a>
             </div>
             
-            <motion.a
-              href="https://api.whatsapp.com/send/?phone=1159097342"
+            <motion.button
+              onClick={handleWhatsAppClick}
               className="navbar-cta"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
+              aria-label="Contactar por WhatsApp"
             >
+              <FaWhatsapp style={{ marginRight: '8px' }} />
               CONTÁCTANOS
-            </motion.a>
+            </motion.button>
           </div>
         </div>
       </div>

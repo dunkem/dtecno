@@ -1,14 +1,3 @@
-.hero-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 50vh;
-  padding: 80px 5%;
-  position: relative;
-  overflow: hidden;
-  background: url('C:\Users\darom\OneDrive\Escritorio\DD\dtecno\public\fondohero.png') no-repeat center center;
-  background-size: cover;
-}
 
 .hero-overlay {
   position: absolute;
@@ -21,7 +10,7 @@
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: 900px;
   text-align: center;
   z-index: 2;
   color: white;

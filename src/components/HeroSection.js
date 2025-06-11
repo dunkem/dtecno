@@ -1,9 +1,22 @@
 import React from 'react';
 import './HeroSection.css';
+import fondoHero from './fondohero.png'; // Asegúrate de que la ruta sea correcta
 
 const HeroSection = () => {
+  const heroStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: '80vh',
+    padding: '80px 5%',
+    position: 'relative',
+    overflow: 'hidden',
+    background: `url(${fondoHero}) no-repeat center center`,
+    backgroundSize: 'cover'
+  };
+
   return (
-    <section className="hero-section">
+    <section className="hero-section" style={heroStyle}>
       <div className="hero-overlay"></div>
       <div className="hero-content animate-fade-in">
         <h1>SOLUCIONES TECNOLÓGICAS QUE <span className="highlight">IMPULSAN</span> TU NEGOCIO</h1>

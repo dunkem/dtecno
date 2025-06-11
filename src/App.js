@@ -50,7 +50,7 @@ function App() {
           
           <div className="social-buttons">
             <a
-              href="https://facebook.com/dtecno1"
+              href="https://facebook.com/dtecno_"
               className="social-button facebook"
               target="_blank"
               rel="noopener noreferrer"
@@ -59,7 +59,7 @@ function App() {
               <FaFacebook size={20} />
             </a>
             <a
-              href="https://www.instagram.com/dtecno1"
+              href="https://www.instagram.com/dtecno_"
               className="social-button instagram"
               target="_blank"
               rel="noopener noreferrer"
