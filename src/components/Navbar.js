@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaBars, FaTimes, FaInstagram, FaFacebookF } from 'react-icons/fa';
+import { FaBars, FaTimes, FaInstagram, FaFacebookF, FaWhatsapp } from 'react-icons/fa';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -25,7 +39,7 @@ function Navbar() {
 
   return (
     <motion.nav
-      className="navbar"
+      className={`navbar ${scrolled ? 'scrolled' : ''}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -34,7 +48,7 @@ function Navbar() {
       <div className="navbar-container">
         <div className="navbar-logo" aria-label="Logo de Dtecno">
           <img 
-            src={`${process.env.PUBLIC_URL}/icono%20sin%20fondo.png`} 
+            src={`${process.env.PUBLIC_URL}/dtecnologo.png`} 
             alt="Dtecno Logo" 
             className="navbar-logo-image" 
             onClick={() => handleScrollToSection('inicio')}
@@ -47,7 +61,11 @@ function Navbar() {
           aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={isOpen}
         >
-          {isOpen ? <FaTimes aria-hidden="true" /> : <FaBars aria-hidden="true" />}
+          {isOpen ? (
+            <FaTimes aria-hidden="true" className="icon-close" />
+          ) : (
+            <FaBars aria-hidden="true" className="icon-open" />
+          )}
         </button>
 
         <div className={`navbar-content ${isOpen ? 'open' : ''}`}>
@@ -85,26 +103,50 @@ function Navbar() {
 
           <div className="navbar-actions">
             <div className="social-links">
-              <a 
-                href="https://facebook.com/dtecno1" 
+              <motion.a
+                href="https://facebook.com/dtecno_" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="Facebook"
                 className="social-icon"
+                whileHover={{ y: -3 }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
                 <FaFacebookF />
-              </a>
-              <a 
-                href="https://www.instagram.com/dtecno1" 
+              </motion.a>
+              <motion.a
+                href="https://www.instagram.com/dtecno_"
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="social-icon"
+                whileHover={{ y: -3 }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
                 <FaInstagram />
-              </a>
+              </motion.a>
+              <motion.a
+                href="https://api.whatsapp.com/send/?phone=1159097342" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="social-icon whatsapp-icon"
+                whileHover={{ y: -3 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <FaWhatsapp />
+              </motion.a>
             </div>
-      
+            
+            <motion.a
+              href="https://api.whatsapp.com/send/?phone=1159097342"
+              className="navbar-cta"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              CONTÁCTANOS
+            </motion.a>
           </div>
         </div>
       </div>

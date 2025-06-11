@@ -1,69 +1,73 @@
-:root {
-  --primary: #2563eb;       /* Azul tecnológico */
-  --primary-dark: #1e40af;
-  --secondary: #10b981;     /* Verde tecnológico */
-  --accent: #f59e0b;        /* Naranja de atención */
-  --dark: #1f2937;          /* Texto oscuro */
-  --light: #f9fafb;         /* Fondo claro */
-  --gray: #6b7280;          /* Texto secundario */
+/* Reset básico para eliminar márgenes y padding no deseados */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Estilos generales */
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden; /* Esto previene el desbordamiento horizontal */
+}
+
 .app-container {
+  position: relative;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: var(--light);
-  position: relative;
+  background-color: #000; /* Fondo negro para evitar bordes blancos */
 }
 
 .main-content {
   flex: 1;
+  width: 100%;
+  overflow: hidden; /* Asegura que nada se desborde */
 }
 
-/* Botones flotantes */
+/* Floating buttons styles */
 .floating-buttons {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 20px;
+  right: 20px;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  z-index: 1000;
+  z-index: 999;
 }
 
 .whatsapp-button {
-  width: 60px;
-  height: 60px;
   background-color: #25D366;
   color: white;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
   position: relative;
 }
 
 .whatsapp-button:hover {
   transform: scale(1.1);
-  background-color: #128C7E;
-  box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
-.whatsapp-button .tooltip {
+.tooltip {
   position: absolute;
   right: 70px;
-  white-space: nowrap;
-  background-color: var(--dark);
+  background: rgba(0, 0, 0, 0.8);
   color: white;
-  padding: 8px 15px;
-  border-radius: 6px;
-  font-size: 0.9rem;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
   opacity: 0;
+  transition: opacity 0.3s;
   pointer-events: none;
-  transition: opacity 0.3s ease;
 }
 
 .whatsapp-button:hover .tooltip {
@@ -73,7 +77,7 @@
 .social-buttons {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
 .social-button {
@@ -84,34 +88,27 @@
   align-items: center;
   justify-content: center;
   color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.social-button.facebook {
-  background-color: #3b5998;
+.facebook {
+  background-color: #1877F2;
 }
 
-.social-button.instagram {
-  background: linear-gradient(45deg, #405de6, #833ab4);
+.instagram {
+  background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
 }
 
 .social-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: scale(1.1);
 }
 
-/* Efectos de hover */
-.whatsapp-button:hover,
-.social-button:hover {
-  transform: translateY(-3px);
-}
-
-/* Responsive */
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .floating-buttons {
-    bottom: 20px;
-    right: 20px;
+    bottom: 15px;
+    right: 15px;
   }
   
   .whatsapp-button {
@@ -120,11 +117,11 @@
   }
   
   .social-button {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
   }
   
-  .whatsapp-button .tooltip {
-    display: none;
+  .tooltip {
+    display: none; /* Ocultamos el tooltip en móviles */
   }
 }

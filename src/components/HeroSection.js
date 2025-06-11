@@ -4,6 +4,7 @@ import './HeroSection.css';
 const HeroSection = () => {
   return (
     <section className="hero-section">
+      <div className="hero-overlay"></div>
       <div className="hero-content animate-fade-in">
         <h1>SOLUCIONES TECNOLÓGICAS QUE <span className="highlight">IMPULSAN</span> TU NEGOCIO</h1>
         <p className="subtitle">Expertos en resolver tus problemas informáticos con soluciones rápidas, efectivas y a precios competitivos</p>
@@ -15,9 +16,7 @@ const HeroSection = () => {
         
         <div className="trust-badges">
           <div className="badge">
-            <div className="stars">
-              {[...Array(1)].map((_, i) => <span key={i}>★★★★★</span>)}
-            </div>
+            <div className="stars">★★★★★</div>
             <span>4.9/5 en Google</span>
           </div>
           <div className="badge">
@@ -29,10 +28,6 @@ const HeroSection = () => {
             <span>Soporte técnico</span>
           </div>
         </div>
-      </div>
-      
-      <div className="hero-image animate-fade-in delay-100">
-        <img src="/hero.jpg" alt="Servicios tecnológicos" />
       </div>
     </section>
   );
