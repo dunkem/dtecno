@@ -125,3 +125,13 @@ html, body {
     display: none; /* Ocultamos el tooltip en móviles */
   }
 }
+/* En tu archivo CSS global */
+h2 {
+  color: #000000 !important;
+}
+
+/* Luego específica los h2 que NO quieres en negro */
+.hero-section h2,
+.services-section h2 {
+  color: #000000 !important; /* O el color original que usabas */
+}
