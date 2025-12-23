@@ -1,118 +1,90 @@
 import React, { useState, useEffect } from 'react';
-import './Navbar.css';
-import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes, FaWhatsapp } from 'react-icons/fa';
-import logo from '../components/dtecnologo.png';
+import logo from '../components/dtecnologo.png'; // Asegúrate que el logo tenga fondo transparente
+import './Navbar.css';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [lastScroll, setLastScroll] = useState(0);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScroll = window.scrollY;
-      if (currentScroll <= 10) {
-        setScrolled(false);
-      } else if (currentScroll > lastScroll) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-      setLastScroll(currentScroll);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScroll]);
+  }, []);
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("¡Hola DTECNO! Vi su página y necesito ayuda con...");
-    window.open(`https://wa.me/1159097342?text=${message}`, '_blank');
+  const handleNavigation = (id) => {
     setIsOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => scrollToSection(id), 100);
+    } else {
+      scrollToSection(id);
+    }
   };
 
-  const handleNavigation = (sectionId) => {
-    if (window.location.pathname === '/') {
-      if (sectionId === 'inicio') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        const element = document.getElementById(sectionId);
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      navigate('/');
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    }
-    setIsOpen(false);
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <motion.nav 
       className={`navbar ${scrolled ? 'scrolled' : ''}`}
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo" onClick={() => window.scrollTo({ top: 0 })}>
-          <img src={logo} alt="DTECNO Soluciones Tecnológicas" loading="eager" />
-          {/* Se eliminó el span con el texto duplicado */}
+        <Link to="/" className="navbar-logo" onClick={() => window.scrollTo(0,0)}>
+          <img src={logo} alt="DTECNO" />
         </Link>
 
-        <div className={`navbar-links ${isOpen ? 'open' : ''}`}>
-          <button 
-            className="nav-link" 
-            onClick={() => handleNavigation('inicio')}
-          >
-            INICIO
-          </button>
-          <button 
-            className="nav-link" 
-            onClick={() => handleNavigation('servicios')}
-          >
-            SERVICIOS
-          </button>
-          <button 
-            className="nav-link" 
-            onClick={() => handleNavigation('proyectos')}
-          >
-            PROYECTOS
-          </button>
-          <Link 
-            to="/it-services" 
-            className="nav-link highlight-link"
-            onClick={() => setIsOpen(false)}
-          >
-            IT SERVICES
-          </Link>
-        </div>
-
-        <div className="navbar-actions">
-          <motion.button
-            className="whatsapp-cta"
-            onClick={handleWhatsAppClick}
+        {/* Desktop Menu */}
+        <div className="navbar-desktop">
+          <button onClick={() => handleNavigation('inicio')} className="nav-link">Inicio</button>
+          <button onClick={() => handleNavigation('servicios')} className="nav-link">Servicios</button>
+          <button onClick={() => handleNavigation('proyectos')} className="nav-link">Proyectos</button>
+          <Link to="/it-services" className="nav-link it-link">Servicios IT</Link>
+          
+          <motion.a 
+            href="https://wa.me/1159097342" 
+            target="_blank"
+            className="navbar-cta"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FaWhatsapp className="whatsapp-icon" />
-            <span>CONTACTO</span>
-          </motion.button>
+            <FaWhatsapp /> Cotizar Ahora
+          </motion.a>
+        </div>
 
-          <button 
-            className="menu-toggle" 
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
-          >
-            {isOpen ? <FaTimes /> : <FaBars />}
-          </button>
+        {/* Mobile Toggle */}
+        <div className="navbar-mobile-toggle" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <FaTimes /> : <FaBars />}
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            className="mobile-menu"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: '100vh' }}
+            exit={{ opacity: 0, height: 0 }}
+          >
+            <button onClick={() => handleNavigation('inicio')}>Inicio</button>
+            <button onClick={() => handleNavigation('servicios')}>Servicios</button>
+            <button onClick={() => handleNavigation('proyectos')}>Proyectos</button>
+            <Link to="/it-services" onClick={() => setIsOpen(false)}>Servicios IT</Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }

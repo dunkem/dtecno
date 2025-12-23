@@ -10,27 +10,24 @@ import Footer from './components/Footer';
 import ItservicesPage from './components/ItservicesPage';
 import './App.css';
 
-// Componente para el botón de WhatsApp con efecto de notificación
+// Componente para el botón de WhatsApp (Optimizado)
 const WhatsAppButton = () => {
   const [pulse, setPulse] = React.useState(true);
 
   React.useEffect(() => {
-    const interval = setInterval(() => {
-      setPulse(prev => !prev);
-    }, 8000); // Pulso cada 8 segundos
-    
+    const interval = setInterval(() => setPulse(p => !p), 4000);
     return () => clearInterval(interval);
   }, []);
 
   const handleClick = () => {
-    const message = encodeURIComponent("¡Hola DTECNO! Vi su página web y estoy interesado en sus servicios. ¿Podrían ayudarme?");
+    const message = encodeURIComponent("¡Hola DTECNO! Vi su web y quiero impulsar mi negocio. 🚀");
     window.open(`https://wa.me/1159097342?text=${message}`, '_blank');
   };
 
   return (
     <div className={`whatsapp-button ${pulse ? 'pulse' : ''}`} onClick={handleClick}>
-      <FaWhatsapp size={28} />
-      <span className="tooltip">¿Necesitas ayuda?<br/>¡Respondemos al instante!</span>
+      <FaWhatsapp size={32} />
+      <span className="tooltip">¿Dudas? Respondemos YA ⚡</span>
     </div>
   );
 };
@@ -39,11 +36,8 @@ function App() {
   return (
     <Router>
       <div className="app-container">
-        {/* Navbar optimizada para conversión */}
         <Navbar />
-        
-        {/* Contenido principal con mejor flujo de conversión */}
-        <main className="main-content">
+        <main>
           <Routes>
             <Route path="/" element={
               <>
@@ -56,32 +50,16 @@ function App() {
             <Route path="/it-services" element={<ItservicesPage />} />
           </Routes>
         </main>
-        
-        {/* Footer con más llamados a la acción */}
         <Footer />
         
-        {/* Botones flotantes mejorados */}
         <div className="floating-buttons">
           <WhatsAppButton />
-          
           <div className="social-buttons">
-            <a
-              href="https://facebook.com/dtecno_"
-              className="social-button facebook"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Ir a Facebook"
-            >
-              <FaFacebook size={20} />
+            <a href="https://facebook.com/dtecno_" target="_blank" rel="noreferrer" aria-label="Facebook">
+              <FaFacebook size={22} />
             </a>
-            <a
-              href="https://www.instagram.com/dtecno_"
-              className="social-button instagram"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Ir a Instagram"
-            >
-              <FaInstagram size={20} />
+            <a href="https://www.instagram.com/dtecno_" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <FaInstagram size={22} />
             </a>
           </div>
         </div>

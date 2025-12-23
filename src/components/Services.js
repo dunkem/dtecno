@@ -1,50 +1,26 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaLaptopCode, FaChartLine, FaShieldAlt } from 'react-icons/fa';
+import { FaCode, FaBullhorn, FaTools, FaCheckCircle } from 'react-icons/fa';
 import './Services.css';
 
-const services = [
+const servicesList = [
   {
-    icon: <FaLaptopCode />,
-    title: "Desarrollo Web Premium",
-    description: "Sitios web rápidos, seguros y optimizados para conversiones con diseño exclusivo.",
-    features: [
-      "Diseño 100% responsive",
-      "SEO integrado",
-      "Tiendas online con pagos",
-      "Panel administrativo",
-      "Backup diario",
-      "Soporte 24/7"
-    ],
-    cta: "Quiero mi web profesional"
+    icon: <FaCode />,
+    title: "Desarrollo Web & React",
+    desc: "Sitios ultra rápidos con React JS. Diseño moderno, adaptado a móviles y optimizado para SEO.",
+    features: ["Landing Pages", "E-commerce", "Web Apps"]
   },
   {
-    icon: <FaChartLine />,
-    title: "Marketing Digital Estratégico",
-    description: "Campañas que generan clientes reales con retorno medible.",
-    features: [
-      "Análisis de competencia",
-      "Segmentación avanzada",
-      "Landing pages convertibles",
-      "Reportes mensuales",
-      "Optimización constante",
-      "ROI garantizado"
-    ],
-    cta: "Potenciar mis ventas"
+    icon: <FaBullhorn />,
+    title: "Meta & Google Ads",
+    desc: "Campañas publicitarias que convierten. Maximizamos tu presupuesto para conseguir clientes reales.",
+    features: ["Segmentación precisa", "ROI Positivo", "Reportes mensuales"]
   },
   {
-    icon: <FaShieldAlt />,
-    title: "Seguridad IT Integral",
-    description: "Protección completa para tu infraestructura tecnológica.",
-    features: [
-      "Antivirus empresarial",
-      "Firewall personalizado",
-      "Backup en la nube",
-      "Monitoreo 24/7",
-      "Respuesta inmediata",
-      "Auditorías periódicas"
-    ],
-    cta: "Proteger mi negocio"
+    icon: <FaTools />,
+    title: "Soporte & WordPress",
+    desc: "Mantenimiento de sitios, actualizaciones, seguridad y gestión de contenido en WordPress.",
+    features: ["Seguridad", "Backups", "Optimización"]
   }
 ];
 
@@ -52,72 +28,38 @@ const Services = () => {
   return (
     <section id="servicios" className="services-section">
       <div className="container">
-        <motion.h2 
-  className="dtecno-section-title"
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
->
-  NUESTROS <span className="dtecno-highlight">SERVICIOS</span>
-</motion.h2>
+        <motion.div 
+          className="section-header"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <span className="section-subtitle">LO QUE HACEMOS</span>
+          <h2>Soluciones <span className="highlight">360°</span></h2>
+        </motion.div>
 
         <div className="services-grid">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
+          {servicesList.map((item, index) => (
+            <motion.div 
+              key={index} 
               className="service-card"
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ delay: index * 0.1 }}
               whileHover={{ y: -10 }}
               viewport={{ once: true }}
             >
-              <div className="service-icon">{service.icon}</div>
-              <h3>{service.title}</h3>
-              <p>{service.description}</p>
-              
-              <ul className="features-list">
-                {service.features.map((feature, i) => (
-                  <li key={i}>
-                    <span className="check-icon">✓</span>
-                    {feature}
-                  </li>
+              <div className="icon-wrapper">{item.icon}</div>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+              <ul className="feature-list">
+                {item.features.map((feat, i) => (
+                  <li key={i}><FaCheckCircle className="check-icon"/> {feat}</li>
                 ))}
               </ul>
-              
-              <motion.a
-                href={`https://wa.me/1159097342?text=Me interesa el servicio de ${service.title}`}
-                className="service-cta"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {service.cta}
-              </motion.a>
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          className="offer-banner"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          <div className="offer-content">
-            <h3>¿NO ENCUENTRAS LO QUE BUSCAS?</h3>
-            <p>Tenemos soluciones personalizadas para cada necesidad</p>
-            <motion.a
-              href="https://wa.me/1159097342"
-              className="offer-button"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              HABLAR CON UN ASESOR
-            </motion.a>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

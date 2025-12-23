@@ -1,205 +1,79 @@
-:root {
-  --nav-bg: rgba(10, 25, 47, 0.9);
-  --nav-bg-scrolled: rgba(10, 25, 47, 0.98);
-  --nav-border: rgba(255, 255, 255, 0.1);
-  --primary-color: #00aaff;
-  --secondary-color: #00ffaa;
-  --whatsapp-color: #25D366;
-  --whatsapp-hover: #128C7E;
-  --text-light: #08961f;
-  --text-white: #fff;
-  --shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
-}
-
-/* Navbar container */
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
-  transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
-  padding: 1.2rem 0;
-  background: var(--nav-bg);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--nav-border);
+  z-index: 999;
+  padding: 15px 0;
+  transition: all 0.3s ease;
+  background: transparent;
 }
-
 .navbar.scrolled {
-  padding: 0.8rem 0;
-  background: var(--nav-bg-scrolled);
-  box-shadow: var(--shadow);
+  background: rgba(10, 10, 10, 0.85); /* Fondo oscuro semitransparente */
+  backdrop-filter: blur(10px); /* Efecto vidrio */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 10px 0;
 }
-
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
-  height: 60px;
+  padding: 0 20px;
 }
-
-/* Logo styles */
-.navbar-logo {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  height: 110px;
-}
+/* En Navbar.css */
 
 .navbar-logo img {
-  height: 100%;
-  transition: transform 0.3s ease;
+  height: 70px; /* <--- CAMBIA ESTE NÚMERO (Antes estaba en 40px) */
+  width: auto;  /* Esto asegura que no se deforme */
+  transition: all 0.3s ease; /* Suaviza el cambio si haces hover */
 }
-
-.navbar-logo:hover img {
-  transform: rotate(-5deg) scale(1.05);
-}
-
-/* Navigation links */
-.navbar-links {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-}
-
-/* Estilo para botones de navegación y links */
-.navbar-links button,
-.navbar-links .nav-link {
-  color: var(--text-light);
-  font-weight: 500;
+.navbar-desktop { display: flex; gap: 20px; align-items: center; }
+.nav-link {
+  background: none;
+  border: none;
+  color: #fff;
   font-size: 0.95rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  position: relative;
-  padding: 0.5rem 0;
-  background: none;
-  border: none;
   cursor: pointer;
-  font-family: inherit;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  transition: color 0.3s;
+  font-weight: 500;
 }
-
-.navbar-links button::after,
-.navbar-links .nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  transition: width 0.3s ease;
-}
-
-.navbar-links button:hover,
-.navbar-links .nav-link:hover {
-  color: var(--text-white);
-}
-
-.navbar-links button:hover::after,
-.navbar-links .nav-link:hover::after {
-  width: 100%;
-}
-
-.highlight-link {
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  color: var(--text-white) !important;
-  padding: 0.5rem 1.2rem;
-  border-radius: 4px;
-  font-weight: 600;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.highlight-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 170, 255, 0.3);
-}
-
-/* WhatsApp CTA button */
-.whatsapp-cta {
+.nav-link:hover { color: var(--accent-cyan); }
+.it-link { color: var(--accent-cyan); font-weight: 700; text-decoration: none;}
+.navbar-cta {
+  background: var(--gradient-blue);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background: var(--whatsapp-color);
-  color: var(--text-white);
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 4px;
+  gap: 8px;
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+.navbar-mobile-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
+.mobile-menu {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background: var(--bg-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  overflow: hidden;
 }
 
-.whatsapp-cta:hover {
-  background: var(--whatsapp-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-}
-
-.whatsapp-icon {
-  font-size: 1.1rem;
-}
-
-/* Mobile menu */
-.menu-toggle {
-  background: none;
-  border: none;
-  color: var(--text-light);
-  font-size: 1.5rem;
-  cursor: pointer;
-  display: none;
-  z-index: 1001;
-  transition: color 0.3s ease;
-}
-
-.menu-toggle:hover {
-  color: var(--text-white);
-}
-
-/* Responsive styles */
 @media (max-width: 768px) {
-  .navbar-container {
-    padding: 0 1.5rem;
-  }
-  
-  .navbar-links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 300px;
-    height: 100vh;
-    background: var(--nav-bg-scrolled);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    transition: right 0.4s ease;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
-  }
-  
-  .navbar-links.open {
-    right: 0;
-  }
-  
-  .menu-toggle {
-    display: block;
-  }
-  
-  .whatsapp-cta {
-    display: none;
-  }
-  
-  .navbar-links button,
-  .navbar-links .nav-link {
-    font-size: 1.1rem;
-    padding: 0.8rem 1.5rem;
-  }
-  
-  .highlight-link {
-    padding: 0.8rem 1.5rem;
+  .navbar-desktop { display: none; }
+  .navbar-mobile-toggle { display: block; }
+}
+/* Al final de Navbar.css */
+@media (max-width: 768px) {
+  .navbar-logo img {
+    height: 50px; /* Un poco más chico en celulares para que entre el menú */
   }
 }
