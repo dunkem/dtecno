@@ -1,0 +1,134 @@
+/* =========================================
+   TechStack.css - CORREGIDO
+========================================= */
+
+.tech-stack-section {
+    background: #080808; /* Un tono ligeramente distinto al fondo principal para contraste */
+    padding: 60px 20px;
+    overflow: hidden;
+}
+
+/* --- Carrusel Infinito (Esta parte estaba bien) --- */
+.tech-carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 60px;
+    padding: 20px 0;
+    /* Máscaras para desvanecer los bordes */
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.tech-carousel-track {
+    display: flex;
+    gap: 40px;
+    width: max-content;
+}
+
+.tech-icon-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    min-width: 140px;
+    backdrop-filter: blur(5px);
+}
+
+.tech-icon-card span {
+    color: var(--text-gray);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* --- Cajas de Resumen (Grid Corregido) --- */
+
+.tech-summary {
+    display: grid;
+    /* CORRECCIÓN 1: Reducimos un poco el mínimo para dar flexibilidad */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    /* CORRECCIÓN 2: Eliminamos "max-width: 900px" que causaba el problema. 
+       Ahora ocupa el 100% del contenedor padre (1200px) */
+    width: 100%; 
+    margin: 0 auto;
+}
+
+.summary-box {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 20px;
+    /* Estilo base del borde izquierdo */
+    border-left: 4px solid var(--primary-blue); 
+    /* Agregamos efecto glass y bordes sutiles en el resto */
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover suave */
+.summary-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Colores específicos para los bordes laterales de cada pilar */
+.summary-box.frontend { border-left-color: #61DAFB; } /* React Blue */
+.summary-box.backend { border-left-color: #47A248; }  /* Mongo Green */
+.summary-box.ads { border-left-color: #4285F4; }      /* Google Blue */
+
+.summary-icon {
+    font-size: 2.5rem;
+    color: var(--text-white);
+    margin-bottom: 20px;
+    /* Sutil brillo en el icono */
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
+}
+
+.summary-box h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--text-white);
+    font-weight: 700;
+}
+
+.summary-box p {
+    color: var(--text-gray);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.summary-box strong {
+    color: var(--accent-cyan);
+    font-weight: 600;
+}
+
+/* --- Responsive Inteligente --- */
+
+/* Tablets (aprox 900px): 2 columnas arriba, 1 abajo centrada */
+@media (max-width: 900px) {
+    .tech-summary {
+        grid-template-columns: 1fr 1fr; 
+    }
+    /* Hacemos que la tercera caja (Ads) ocupe el ancho de las dos columnas */
+    .summary-box:nth-child(3) {
+        grid-column: span 2;
+    }
+}
+
+/* Celulares: 1 columna apilada */
+@media (max-width: 600px) {
+    .tech-summary {
+        grid-template-columns: 1fr;
+    }
+    /* Reseteamos el span para que vuelva a ser normal */
+    .summary-box:nth-child(3) {
+        grid-column: span 1;
+    }
+}

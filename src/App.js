@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { FaWhatsapp, FaFacebook, FaInstagram } from 'react-icons/fa';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
+import TechStack from './components/TechStack';
 import Services from './components/Services';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
@@ -42,6 +43,7 @@ function App() {
             <Route path="/" element={
               <>
                 <HeroSection />
+                <TechStack />
                 <Services />
                 <Projects />
                 <Contact />

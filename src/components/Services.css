@@ -1,40 +1,136 @@
 .services-section {
-  padding: 100px 20px;
-  background: var(--bg-dark);
+    padding: 60px 20px; /* Ajustado según tu pedido anterior de menos espacio */
+    background: var(--bg-dark);
+    position: relative;
 }
-.container { max-width: 1200px; margin: 0 auto; }
-.section-header { text-align: center; margin-bottom: 60px; }
-.section-subtitle { color: var(--primary-blue); font-weight: 700; letter-spacing: 2px; font-size: 0.9rem; }
-h2 { font-size: 2.5rem; margin-top: 10px; }
 
+/* Grid mejorado */
 .services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Tarjetas un poco más anchas */
+    gap: 40px;
+    align-items: stretch; /* Para que todas tengan la misma altura */
 }
+
+/* Estilo de Tarjeta "Glass" */
 .service-card {
-  background: var(--bg-card);
-  padding: 40px 30px;
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.05);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+    background: rgba(255, 255, 255, 0.03); /* Muy transparente */
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Borde sutil */
+    border-radius: 25px;
+    padding: 40px 30px;
+    backdrop-filter: blur(10px); /* Efecto vidrio */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Asegura altura completa para alinear el botón al final */
+    position: relative;
+    overflow: hidden;
 }
-.service-card:hover {
-  border-color: var(--primary-blue);
-  box-shadow: var(--shadow-glow);
+
+/* Un toque de luz sutil en la parte superior de la tarjeta */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(0, 123, 255, 0.1), transparent 40%);
+    pointer-events: none;
+    opacity: 0.5;
 }
+
+
 .icon-wrapper {
-  font-size: 2.5rem;
-  color: var(--accent-cyan);
-  margin-bottom: 20px;
+    font-size: 3rem;
+    color: var(--accent-cyan);
+    margin-bottom: 25px;
+    display: inline-block;
+    /* Sutil sombra al icono */
+    filter: drop-shadow(0 0 8px rgba(0, 210, 255, 0.3));
 }
-.service-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
-.service-card p { color: var(--text-gray); line-height: 1.6; margin-bottom: 20px; }
-.feature-list { list-style: none; padding: 0; }
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--text-white);
+    font-weight: 700;
+}
+
+.service-card p {
+    color: var(--text-gray);
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+    flex-grow: 0; /* Evita que el párrafo empuje demasiado */
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    flex-grow: 1; /* Empuja el botón hacia abajo */
+}
+
 .feature-list li {
-  display: flex; align-items: center; gap: 10px;
-  color: #fff; margin-bottom: 10px; font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ddd;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
 }
-.check-icon { color: var(--primary-blue); }
+
+.check-icon {
+    color: var(--primary-blue);
+    font-size: 1rem;
+    flex-shrink: 0; /* Evita que el icono se aplaste si el texto es largo */
+}
+
+/* Contenedor y Botón CTA de la tarjeta */
+.card-cta-container {
+    margin-top: auto; /* Empuja el contenedor al fondo de la tarjeta */
+}
+
+.service-card-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 20px;
+    background: rgba(0, 123, 255, 0.1); /* Fondo azul muy suave */
+    color: var(--accent-cyan);
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: 1px solid rgba(0, 123, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-arrow {
+    transition: transform 0.3s ease;
+}
+
+/* Hover específico del botón interno */
+.service-card-btn:hover {
+    background: var(--gradient-blue);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.service-card-btn:hover .btn-arrow {
+    transform: translateX(5px); /* Mueve la flechita a la derecha */
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* Una sola columna en móvil */
+        gap: 30px;
+    }
+    .service-card {
+        padding: 30px 20px;
+    }
+}

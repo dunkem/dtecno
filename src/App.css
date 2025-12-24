@@ -1,152 +1,97 @@
-/* Variables Globales */
+/* =========================================
+   App.css - ESTILOS GLOBALES CRÍTICOS
+========================================= */
+
+/* 1. Variables (Asegúrate de tenerlas) */
 :root {
   --bg-dark: #0a0a0a;
-  --bg-card: #161616;
+  --bg-card: rgba(255, 255, 255, 0.03);
   --primary-blue: #007bff;
   --accent-cyan: #00d2ff;
   --text-white: #ffffff;
   --text-gray: #a1a1aa;
   --gradient-blue: linear-gradient(135deg, #007bff 0%, #00d2ff 100%);
-  --glass: rgba(22, 22, 22, 0.8);
-  --border-glass: rgba(255, 255, 255, 0.1);
-  --shadow-glow: 0 0 20px rgba(0, 123, 255, 0.3);
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', 'Roboto', sans-serif; /* Asegúrate de importar la fuente */
 }
 
 body {
-  background-color: var(--bg-dark);
-  color: var(--text-white);
-  overflow-x: hidden;
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: 'Inter', sans-serif; /* O la fuente que uses */
+    overflow-x: hidden; /* Evita scroll horizontal indeseado */
 }
 
-/* Scrollbar personalizada */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-dark);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--primary-blue);
-  border-radius: 4px;
+/* =========================================
+   SOLUCIÓN PROBLEMA 2: Contenido ancho
+   El Container Global
+========================================= */
+/* Esta clase es MAGIA. Controla que nada se expanda más de 1200px */
+.container {
+    width: 100%;
+    max-width: 1200px; /* Ancho máximo estándar profesional */
+    margin: 0 auto;    /* Centra el contenedor horizontalmente */
+    padding: 0 25px;   /* Espacio de seguridad a los costados en móviles */
 }
 
-/* Utilidades de Texto */
+/* Configuración estándar para las secciones */
+section {
+    padding: 70px 0; /* Espaciado vertical entre secciones */
+    width: 100%;
+}
+
+/* Excepción para el Hero (siempre pantalla completa) */
+.hero-section {
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* =========================================
+   SOLUCIÓN PROBLEMA 1: Títulos a la izquierda
+   Header de Sección Global
+========================================= */
+/* Esto asegura que TODOS los encabezados de sección se centren */
+.section-header {
+    text-align: center;          /* Centra el texto */
+    margin-bottom: 50px;         /* Espacio debajo del título */
+    display: flex;               /* Asegura centrado en layouts complejos */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Estilos para los subtítulos (ej: "NUESTRO ARSENAL") */
+.section-subtitle {
+    color: var(--accent-cyan);
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Estilos para los títulos H2 (ej: "Tecnología Elite") */
+.section-header h2 {
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+/* Utilidad para texto destacado */
 .highlight {
-  background: var(--gradient-blue);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 800;
+    background: var(--gradient-blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* Botones Globales Modernos */
-.cta-button {
-  padding: 12px 30px;
-  border-radius: 50px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.cta-button.primary {
-  background: var(--gradient-blue);
-  color: white;
-  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
-  border: none;
-}
-
-.cta-button.secondary {
-  background: transparent;
-  border: 1px solid var(--primary-blue);
-  color: var(--primary-blue);
-}
-
-.cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 210, 255, 0.6);
-}
-
-/* WhatsApp Flotante Mejorado */
-.floating-buttons {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: flex-end;
-}
-
-.whatsapp-button {
-  background: #25D366;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.whatsapp-button.pulse {
-  animation: pulse-animation 2s infinite;
-}
-
-@keyframes pulse-animation {
-  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-  70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-}
-
-.tooltip {
-  position: absolute;
-  right: 70px;
-  background: white;
-  color: black;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  width: max-content;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  opacity: 0;
-  transform: translateX(10px);
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
-
-.whatsapp-button:hover .tooltip {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.social-buttons a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: var(--bg-card);
-  color: var(--text-white);
-  margin-top: 10px;
-  border: 1px solid var(--border-glass);
-  transition: all 0.3s ease;
-}
-
-.social-buttons a:hover {
-  background: var(--primary-blue);
-  color: white;
+/* =========================================
+   RESPONSIVE GLOBAL
+========================================= */
+@media (max-width: 768px) {
+    .section-header h2 {
+        font-size: 2rem; /* Títulos más chicos en celular */
+    }
+    section {
+        padding: 50px 0; /* Menos espacio vertical en celular */
+    }
 }

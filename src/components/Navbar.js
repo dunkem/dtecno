@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes, FaWhatsapp } from 'react-icons/fa';
-import logo from '../components/dtecnologo.png'; // Asegúrate que el logo tenga fondo transparente
+import logo from '../components/dtecnologo.png'; // Asegúrate que la ruta al logo sea correcta
 import './Navbar.css';
 
 function Navbar() {
@@ -11,12 +11,23 @@ function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Manejo del scroll para cambiar el fondo del navbar
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Evitar scroll cuando el menú móvil está abierto
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
+  // Función para navegar entre secciones o rutas
   const handleNavigation = (id) => {
     setIsOpen(false);
     if (location.pathname !== '/') {
@@ -27,6 +38,7 @@ function Navbar() {
     }
   };
 
+  // Función auxiliar para el scroll suave
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -42,10 +54,10 @@ function Navbar() {
     >
       <div className="navbar-container">
         <Link to="/" className="navbar-logo" onClick={() => window.scrollTo(0,0)}>
-          <img src={logo} alt="DTECNO" />
+          <img src={logo} alt="DTECNO Soluciones Digitales" />
         </Link>
 
-        {/* Desktop Menu */}
+        {/* Menú de Escritorio */}
         <div className="navbar-desktop">
           <button onClick={() => handleNavigation('inicio')} className="nav-link">Inicio</button>
           <button onClick={() => handleNavigation('servicios')} className="nav-link">Servicios</button>
@@ -55,6 +67,7 @@ function Navbar() {
           <motion.a 
             href="https://wa.me/1159097342" 
             target="_blank"
+            rel="noopener noreferrer"
             className="navbar-cta"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -63,25 +76,42 @@ function Navbar() {
           </motion.a>
         </div>
 
-        {/* Mobile Toggle */}
+        {/* Botón Hamburguesa para Móvil */}
         <div className="navbar-mobile-toggle" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <FaTimes /> : <FaBars />}
+          <FaBars />
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Nuevo Menú Móvil de Pantalla Completa (Overlay) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
-            className="mobile-menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: '100vh' }}
-            exit={{ opacity: 0, height: 0 }}
+            className="mobile-menu-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
           >
-            <button onClick={() => handleNavigation('inicio')}>Inicio</button>
-            <button onClick={() => handleNavigation('servicios')}>Servicios</button>
-            <button onClick={() => handleNavigation('proyectos')}>Proyectos</button>
-            <Link to="/it-services" onClick={() => setIsOpen(false)}>Servicios IT</Link>
+            {/* Botón de cerrar dentro del overlay */}
+            <button className="close-menu-btn" onClick={() => setIsOpen(false)}>
+               <FaTimes />
+            </button>
+
+            <motion.div 
+               className="mobile-links-container"
+               initial={{ y: 50, opacity: 0 }}
+               animate={{ y: 0, opacity: 1 }}
+               transition={{ delay: 0.2, duration: 0.4 }}
+            >
+              <button onClick={() => handleNavigation('inicio')} className="mobile-nav-link">Inicio</button>
+              <button onClick={() => handleNavigation('servicios')} className="mobile-nav-link">Servicios</button>
+              <button onClick={() => handleNavigation('proyectos')} className="mobile-nav-link">Proyectos</button>
+              <Link to="/it-services" onClick={() => setIsOpen(false)} className="mobile-nav-link highlight">Servicios IT</Link>
+              
+              <a href="https://wa.me/1159097342" className="mobile-cta-btn">
+                 <FaWhatsapp /> Cotizar Ahora
+              </a>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

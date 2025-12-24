@@ -1,94 +1,153 @@
-import React from 'react';
+import React, { useRef } from 'react'; // Importamos useRef
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-// Aquí borramos los iconos que no se usaban para limpiar el error
-import { FaDesktop, FaServer, FaShieldVirus, FaPhoneAlt } from 'react-icons/fa';
+// Agregamos las flechas para el carrusel
+import { FaServer, FaShieldVirus, FaPhoneAlt, FaMicrochip, FaTools, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './ItservicesPage.css';
 
 const services = [
   {
-    icon: <FaDesktop />,
-    title: "Reparación PC & Notebooks",
-    description: "Diagnóstico preciso y reparación de hardware/software.",
-    details: ["Cambio de componentes", "Limpieza física", "Instalación Windows/Office", "Optimización de velocidad"],
+    icon: <FaMicrochip />,
+    title: "Armado de PC (Elite Builds)",
+    description: "Equipos de alto rendimiento diseñados a medida. Máxima potencia y fiabilidad.",
+    details: [
+      "Workstations: Arquitectura/Render 3D",
+      "Gaming Extremo: Máximos FPS",
+      "Oficina: Multitasking fluido",
+      "Asesoría + Armado profesional"
+    ],
+    price: "Cotización Personalizada",
+    featured: true
+  },
+  {
+    icon: <FaTools />,
+    title: "Reparación y Optimización",
+    description: "Devolvemos la vida a tu equipo. Diagnóstico rápido y soluciones definitivas.",
+    details: ["Recuperación de datos", "Limpieza y pasta térmica", "Reinstalación Windows", "Upgrade SSD/RAM"],
     price: "Diagnóstico GRATIS"
   },
   {
     icon: <FaServer />,
     title: "Infraestructura & Redes",
-    description: "Cableado estructurado y configuración de servidores.",
-    details: ["Configuración Mikrotik/Cisco", "Servidores Windows/Linux", "Wi-Fi Empresarial", "Racks de comunicaciones"],
+    description: "Conectividad empresarial estable. Olvídate de los cortes en tu oficina.",
+    details: ["Cableado estructurado", "Configuración Servidores", "Wi-Fi corporativo", "Racks de comunicaciones"],
     price: "Presupuesto a medida"
   },
   {
     icon: <FaShieldVirus />,
     title: "Ciberseguridad Pyme",
-    description: "Protege los datos de tu empresa contra ataques.",
-    details: ["Firewall perimetral", "Antivirus corporativo", "Copias de seguridad (Backup)", "Recuperación de datos"],
+    description: "Blindamos tu negocio. Protege tu información contra ataques externos.",
+    details: ["Firewall perimetral", "Antivirus gestionado", "Backups automáticos", "Auditoría de seguridad"],
     price: "Planes mensuales"
   }
 ];
 
 const ItservicesPage = () => {
+  // Referencia para controlar el carrusel
+  const carouselRef = useRef(null);
+
+  // Función para mover el carrusel
+  const scroll = (direction) => {
+    if(carouselRef.current) {
+        const { current } = carouselRef;
+        const scrollAmount = direction === 'left' ? -350 : 350; // Cantidad de desplazamiento
+        current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   return (
     <main className="itservices-page">
       <Helmet>
-        <title>Servicios IT y Soporte Técnico | DTECNO</title>
-        <meta name="description" content="Soporte técnico especializado para empresas y particulares. Reparación de PC, redes, servidores y seguridad informática en Buenos Aires." />
+        <title>Armado de PC y Servicios IT | DTECNO Elite Tech</title>
+        <meta name="description" content="Armado de PCs a medida para gaming y arquitectura. Soporte técnico especializado." />
       </Helmet>
 
       {/* Hero Banner IT */}
       <section className="it-hero">
+        <div className="it-hero-overlay"></div>
         <div className="it-hero-content">
           <motion.h1 
             initial={{ opacity: 0, y: -20 }} 
             animate={{ opacity: 1, y: 0 }}
           >
-            SOPORTE TÉCNICO <span className="highlight">ELITE</span>
+            TU SOCIO TECNOLÓGICO <span className="highlight">ELITE</span>
           </motion.h1>
-          <p>Tu departamento de sistemas externo. Resolvemos problemas, prevenimos fallas.</p>
+          <p>Potencia, Velocidad y Seguridad. Elevamos tu estándar tecnológico.</p>
           <motion.a 
-            href="https://wa.me/1159097342?text=Tengo%20una%20urgencia%20técnica" 
+            href="https://wa.me/1159097342?text=Hola DTECNO, necesito asesoramiento técnico." 
             className="emergency-btn"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(0, 123, 255, 0.6)" }}
             whileTap={{ scale: 0.95 }}
           >
-            <FaPhoneAlt /> URGENCIA TÉCNICA 24/7
+            <FaPhoneAlt /> HABLAR CON UN EXPERTO
           </motion.a>
         </div>
       </section>
 
-      {/* Grid de Servicios */}
-      <section className="it-services-grid container">
-        {services.map((service, index) => (
-          <motion.div 
-            key={index}
-            className="it-card"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            viewport={{ once: true }}
-          >
-            <div className="it-icon">{service.icon}</div>
-            <h3>{service.title}</h3>
-            <p className="it-desc">{service.description}</p>
-            <ul className="it-details">
-              {service.details.map((det, i) => (
-                <li key={i}>• {det}</li>
-              ))}
-            </ul>
-            <div className="it-price">{service.price}</div>
-            <a href="https://wa.me/1159097342" className="it-btn">Solicitar</a>
-          </motion.div>
-        ))}
+      {/* SECCIÓN DE CARRUSEL DE SERVICIOS */}
+      <section className="container carousel-section">
+        <div className="section-header" style={{marginTop: '60px'}}>
+            <span className="section-subtitle">SOLUCIONES INTEGRALES</span>
+            <h2>Nuestros Servicios <span className="highlight">Premium</span></h2>
+        </div>
+
+        {/* Contenedor relativo para posicionar flechas */}
+        <div className="carousel-wrapper">
+            {/* Botón Izquierda */}
+            <button className="carousel-btn left" onClick={() => scroll('left')} aria-label="Anterior">
+                <FaChevronLeft />
+            </button>
+
+            {/* El Carrusel Scrollable */}
+            <div className="it-services-carousel" ref={carouselRef}>
+                {services.map((service, index) => (
+                <motion.div 
+                    key={index}
+                    className={`it-card ${service.featured ? 'featured-card' : ''}`}
+                    initial={{ opacity: 0, x: 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -5 }}
+                >
+                    <div className="it-icon-wrapper">
+                        <div className="it-icon">{service.icon}</div>
+                    </div>
+                    <h3>{service.title}</h3>
+                    <p className="it-desc">{service.description}</p>
+                    <ul className="it-details">
+                        {service.details.map((det, i) => (
+                            <li key={i}>{det}</li>
+                        ))}
+                    </ul>
+                    <div className="card-footer">
+                        <div className="it-price-tag">{service.price}</div>
+                        <a 
+                            href={`https://wa.me/1159097342?text=Hola, me interesa ${service.title}`}
+                            className="it-btn"
+                        >
+                            {service.featured ? 'COTIZAR' : 'SOLICITAR'}
+                        </a>
+                    </div>
+                </motion.div>
+                ))}
+            </div>
+
+            {/* Botón Derecha */}
+            <button className="carousel-btn right" onClick={() => scroll('right')} aria-label="Siguiente">
+                <FaChevronRight />
+            </button>
+        </div>
       </section>
 
       {/* Banner de Garantía */}
-      <section className="guarantee-banner">
-        <FaShieldVirus size={40} style={{color: '#00d2ff'}} />
+      <section className="guarantee-banner container" style={{marginTop: '40px', marginBottom: '40px', borderRadius: '20px'}}>
+        <div className="guarantee-icon-box">
+            <FaShieldVirus size={35} />
+        </div>
         <div>
-          <h3>Garantía DTECNO</h3>
-          <p>Todos nuestros trabajos cuentan con 90 días de garantía escrita.</p>
+          <h3>Garantía Total DTECNO</h3>
+          <p>Compromiso de calidad. Todos nuestros trabajos cuentan con <strong>90 días de garantía escrita</strong>.</p>
         </div>
       </section>
     </main>

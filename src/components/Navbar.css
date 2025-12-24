@@ -1,18 +1,23 @@
+/* =========================================
+   ESTILOS BASE DEL NAVBAR (Escritorio)
+========================================= */
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 999; /* Debe ser alto, pero menor que el overlay móvil */
   padding: 15px 0;
   transition: all 0.3s ease;
   background: transparent;
 }
+
 .navbar.scrolled {
   background: rgba(10, 10, 10, 0.85); /* Fondo oscuro semitransparente */
   backdrop-filter: blur(10px); /* Efecto vidrio */
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   padding: 10px 0;
 }
+
 .navbar-container {
   display: flex;
   justify-content: space-between;
@@ -21,59 +26,198 @@
   margin: 0 auto;
   padding: 0 20px;
 }
-/* En Navbar.css */
 
+/* Logo */
 .navbar-logo img {
-  height: 70px; /* <--- CAMBIA ESTE NÚMERO (Antes estaba en 40px) */
-  width: auto;  /* Esto asegura que no se deforme */
-  transition: all 0.3s ease; /* Suaviza el cambio si haces hover */
+  height: 90px;
+  width: auto;
+  transition: all 0.3s ease;
+  display: block; /* Asegura que no tenga márgenes extraños */
 }
-.navbar-desktop { display: flex; gap: 20px; align-items: center; }
+
+/* Enlaces de Escritorio */
+.navbar-desktop {
+  display: flex;
+  gap: 25px; /* Un poco más de espacio entre enlaces */
+  align-items: center;
+}
+
 .nav-link {
   background: none;
   border: none;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.8); /* Blanco no tan brillante para no competir */
   font-size: 0.95rem;
   cursor: pointer;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.2s;
   font-weight: 500;
+  padding: 5px 0;
+  font-family: inherit; /* Heredar fuente del body */
 }
-.nav-link:hover { color: var(--accent-cyan); }
-.it-link { color: var(--accent-cyan); font-weight: 700; text-decoration: none;}
+
+.nav-link:hover {
+  color: var(--accent-cyan);
+  transform: translateY(-2px); /* Pequeño efecto al pasar el mouse */
+}
+
+.it-link {
+  color: var(--accent-cyan);
+  font-weight: 700;
+  text-decoration: none;
+  position: relative;
+}
+/* Subrayado animado para el link destacado */
+.it-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent-cyan);
+    transition: width 0.3s ease;
+}
+.it-link:hover::after {
+    width: 100%;
+}
+
+/* Botón CTA de Escritorio */
 .navbar-cta {
   background: var(--gradient-blue);
   color: white;
-  padding: 8px 20px;
-  border-radius: 20px;
+  padding: 10px 22px;
+  border-radius: 30px;
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 8px;
   font-weight: 600;
   font-size: 0.9rem;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
 }
-.navbar-mobile-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
-.mobile-menu {
-  position: absolute;
-  top: 60px;
+
+/* =========================================
+   ESTILOS DEL MENÚ MÓVIL (Overlay)
+========================================= */
+
+/* Botón Hamburguesa (solo visible en móvil) */
+.navbar-mobile-toggle {
+  display: none; /* Oculto por defecto en escritorio */
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 1002; /* Por encima de todo, incluso del overlay si fuera necesario */
+  padding: 5px;
+}
+
+/* El contenedor principal que cubre TODA la pantalla */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
   left: 0;
-  width: 100%;
-  background: var(--bg-dark);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(8, 8, 8, 0.98); /* Fondo casi negro sólido */
+  backdrop-filter: blur(15px); /* Efecto blur potente */
+  z-index: 2000; /* ¡IMPORTANTE! Debe estar por encima del navbar fijo (999) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Botón 'X' para cerrar dentro del menú */
+.close-menu-btn {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 2.2rem;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+  padding: 10px;
+}
+
+.close-menu-btn:hover {
+  color: white;
+  transform: rotate(90deg); /* Pequeña animación al pasar el mouse */
+}
+
+/* Contenedor de los enlaces verticales */
+.mobile-links-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 30px;
-  overflow: hidden;
+  gap: 35px; /* Espacio generoso entre enlaces */
+}
+
+/* Estilo de los enlaces en el menú móvil */
+.mobile-nav-link {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem; /* Letra grande y legible */
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+  font-family: inherit;
+  letter-spacing: 1px;
+}
+
+.mobile-nav-link:hover {
+  color: var(--primary-blue);
+  transform: scale(1.1); /* Efecto de zoom al tocar */
+}
+
+.mobile-nav-link.highlight {
+  color: var(--accent-cyan);
+}
+
+/* Botón CTA dentro del menú móvil */
+.mobile-cta-btn {
+  margin-top: 30px;
+  background: var(--gradient-blue);
+  color: white;
+  padding: 15px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 5px 20px rgba(0, 210, 255, 0.4);
+}
+
+/* =========================================
+   MEDIA QUERIES (Ajustes para Celular)
+========================================= */
+@media (max-width: 900px) {
+  /* Ocultamos el menú de escritorio en tablets también */
+  .navbar-desktop {
+    display: none;
+  }
+  /* Mostramos el botón hamburguesa */
+  .navbar-mobile-toggle {
+    display: block;
+  }
 }
 
 @media (max-width: 768px) {
-  .navbar-desktop { display: none; }
-  .navbar-mobile-toggle { display: block; }
-}
-/* Al final de Navbar.css */
-@media (max-width: 768px) {
+  .navbar-container {
+      padding: 0 15px; /* Menos padding lateral en móviles */
+  }
+  
+  /* Ajuste del tamaño del logo para celulares */
   .navbar-logo img {
-    height: 50px; /* Un poco más chico en celulares para que entre el menú */
+    height: 45px; /* Tamaño óptimo para que no moleste */
+  }
+  
+  /* Ajuste del tamaño de fuente en menú móvil para pantallas muy chicas */
+  .mobile-nav-link {
+      font-size: 1.6rem;
+      gap: 25px;
   }
 }

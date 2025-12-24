@@ -1,99 +1,243 @@
+/* =========================================
+   ItservicesPage.css - CARRUSEL MODERNO
+========================================= */
+
 .itservices-page {
   background: var(--bg-dark);
-  padding-top: 80px; /* Espacio para el Navbar fijo */
+  padding-top: 80px;
   min-height: 100vh;
 }
 
+/* --- Hero Section --- */
 .it-hero {
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); /* Imagen tech de fondo */
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); 
   background-size: cover;
   background-position: center;
-  padding: 80px 20px;
+  padding: 100px 20px;
   text-align: center;
-  border-bottom: 1px solid var(--primary-blue);
+  border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+  overflow: hidden;
 }
 
-.it-hero h1 { font-size: 3rem; margin-bottom: 15px; }
-.it-hero p { color: var(--text-gray); font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px; }
+.it-hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, rgba(10,10,10,0.8) 0%, rgba(10,10,10,0.95) 100%);
+    z-index: 1;
+}
+
+.it-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.it-hero h1 { 
+    font-size: 3.5rem; 
+    margin-bottom: 20px; 
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.it-hero p { 
+    color: var(--text-gray); 
+    font-size: 1.3rem; 
+    max-width: 700px; 
+    margin: 0 auto 40px; 
+}
 
 .emergency-btn {
-  background: #ff3e3e; /* Rojo urgencia */
+  background: var(--gradient-blue);
   color: white;
-  padding: 15px 30px;
+  padding: 15px 35px;
   border-radius: 50px;
   font-weight: 800;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  box-shadow: 0 0 20px rgba(255, 62, 62, 0.4);
-  animation: pulse-red 2s infinite;
-}
-
-@keyframes pulse-red {
-  0% { box-shadow: 0 0 0 0 rgba(255, 62, 62, 0.7); }
-  70% { box-shadow: 0 0 0 15px rgba(255, 62, 62, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 62, 62, 0); }
-}
-
-.it-services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  padding: 60px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.it-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-glass);
-  border-radius: 15px;
-  padding: 30px;
-  text-align: center;
+  gap: 12px;
+  font-size: 1.1rem;
+  box-shadow: 0 10px 30px rgba(0, 123, 255, 0.3);
   transition: all 0.3s ease;
 }
 
-.it-card:hover { border-color: var(--accent-cyan); transform: translateY(-5px); }
-
-.it-icon { font-size: 3rem; color: var(--primary-blue); margin-bottom: 20px; }
-.it-card h3 { color: white; margin-bottom: 10px; }
-.it-details {
-  list-style: none; padding: 0; text-align: left; margin: 20px 0; color: var(--text-gray);
-  font-size: 0.9rem;
+/* --- ESTILOS DEL CARRUSEL --- */
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
 }
-.it-details li { margin-bottom: 8px; }
 
-.it-price {
-  background: rgba(0, 123, 255, 0.1);
-  color: var(--accent-cyan);
-  padding: 5px 10px;
-  border-radius: 5px;
+.it-services-carousel {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto; /* Permite scroll horizontal */
+  scroll-snap-type: x mandatory; /* Efecto magnético al soltar */
+  padding: 20px 5px 60px 5px; /* Espacio para la sombra inferior */
+  scrollbar-width: none; /* Ocultar scrollbar en Firefox */
+  width: 100%;
+}
+
+.it-services-carousel::-webkit-scrollbar {
+    display: none; /* Ocultar scrollbar en Chrome/Safari */
+}
+
+/* Botones de Navegación del Carrusel */
+.carousel-btn {
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.1);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s;
+}
+
+.carousel-btn:hover {
+    background: var(--primary-blue);
+    transform: scale(1.1);
+}
+
+.carousel-btn.left { left: -20px; }
+.carousel-btn.right { right: -20px; }
+
+/* --- Tarjetas del Carrusel --- */
+.it-card {
+  /* Ancho fijo para que funcione el carrusel */
+  min-width: 320px; 
+  max-width: 320px;
+  
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px 25px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  backdrop-filter: blur(10px);
+  scroll-snap-align: center; /* Centrar al hacer scroll */
+  height: auto; /* Altura automática */
+}
+
+/* Tarjeta Destacada */
+.it-card.featured-card {
+    background: linear-gradient(145deg, rgba(0, 123, 255, 0.08) 0%, rgba(0, 210, 255, 0.02) 100%);
+    border: 1px solid var(--accent-cyan);
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
+}
+
+/* Detalles internos de la tarjeta */
+.it-icon-wrapper { margin-bottom: 20px; }
+.it-icon { font-size: 2.5rem; color: var(--accent-cyan); }
+
+.it-card h3 { 
+    color: white; 
+    margin-bottom: 15px; 
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.featured-card h3 {
+    background: var(--gradient-blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.it-desc {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    height: 60px; /* Altura fija para alinear */
+    overflow: hidden;
+}
+
+.it-details {
+  list-style: none; padding: 0; margin: 0 0 20px 0;
+  color: #ddd; font-size: 0.85rem; font-weight: 500;
+  flex-grow: 1; /* Empuja el footer hacia abajo */
+}
+
+.it-details li { 
+    margin-bottom: 8px; display: flex; align-items: flex-start; 
+}
+.it-details li::before {
+    content: '•'; color: var(--accent-cyan); margin-right: 8px;
+}
+
+/* Footer de la tarjeta (Precio + Botón) siempre abajo */
+.card-footer {
+    margin-top: auto;
+}
+
+.it-price-tag {
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--text-white);
+  padding: 6px 12px;
+  border-radius: 8px;
   display: inline-block;
-  margin-bottom: 20px;
-  font-weight: 600;
-  font-size: 0.9rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .it-btn {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  border: 1px solid var(--primary-blue);
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background 0.3s;
+  display: block; width: 100%; padding: 12px;
+  text-align: center; background: transparent;
+  border: 2px solid var(--primary-blue);
+  color: var(--primary-blue); text-decoration: none;
+  border-radius: 12px; font-weight: 700;
+  transition: all 0.3s;
 }
 
-.it-btn:hover { background: var(--primary-blue); }
+.it-btn:hover { 
+    background: var(--primary-blue); color: white;
+}
 
+.featured-card .it-btn {
+    background: var(--gradient-blue); border: none; color: white;
+}
+
+/* Garantía */
 .guarantee-banner {
-  background: #111;
-  padding: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  border-top: 1px solid #333;
+  background: linear-gradient(to right, #111, #161616);
+  padding: 30px 40px;
+  display: flex; align-items: center; gap: 25px;
+  border: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+}
+.guarantee-icon-box {
+    width: 60px; height: 60px;
+    background: rgba(0, 210, 255, 0.1); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent-cyan); flex-shrink: 0;
+}
+.guarantee-banner h3 { font-size: 1.3rem; margin-bottom: 5px; color: white; }
+.guarantee-banner p { color: var(--text-gray); margin: 0; }
+.guarantee-banner strong { color: var(--accent-cyan); }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .it-hero h1 { font-size: 2.2rem; }
+    .carousel-btn { display: none; /* En celular se usa el dedo, ocultamos flechas */ }
+    .it-services-carousel { 
+        padding-left: 20px; 
+        padding-right: 20px; 
+        scroll-padding-left: 20px; /* Para que la tarjeta no quede pegada al borde */
+    }
+    .it-card {
+        min-width: 280px; /* Un poco más angosto en celular */
+        max-width: 280px;
+    }
+    .guarantee-banner { flex-direction: column; text-align: center; }
 }
