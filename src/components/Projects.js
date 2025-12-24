@@ -6,27 +6,26 @@ import { FaExternalLinkAlt } from 'react-icons/fa';
 import './Projects.css';
 
 const projects = [
-{
+  {
     title: "Darom SA",
-    category: "Web Corporativa + SEO",
-    desc: "Rediseño completo para empresa líder. Mejora de velocidad del 300% y posicionamiento en primera página.",
+    category: "Desarrollo Full Stack + Ads 360°",
+    desc: "Transformación digital integral. Desarrollo web de alto rendimiento combinado con una estrategia agresiva en Google y Meta Ads. Resultados: Aumento exponencial de ventas y dominio del posicionamiento SEO en su sector.",
     link: "https://daromsa.com.ar",
-    image: "/logodarom.png" // React busca esto automáticamente en la carpeta public
+    image: "/logodarom.png"
   },
   {
     title: "Iobella Hudson",
-    category: "Estética & Ads",
-    desc: "Sitio web elegante + Campañas de Meta Ads generando +100 leads mensuales.",
+    category: "Diseño Web + Google Ads",
+    desc: "Ecosistema digital enfocado en la conversión. Sitio web estético y veloz, potenciado por campañas de búsqueda en Google Ads que captan leads calificados diariamente, llenando la agenda de turnos.",
     link: "https://iobellahudson.com",
     image: "/logoiobellahudson.png"
   },
   {
     title: "M y D Muebles",
-    category: "Showroom Virtual + AR",
-    desc: "Experiencia inmersiva con galería 3D y realidad aumentada para visualizar productos en el hogar.",
+    category: "E-commerce & SEO Técnico",
+    desc: "Showroom digital optimizado. Implementación de arquitectura SEO avanzada que posicionó a la marca en búsquedas clave, aumentando drásticamente el tráfico orgánico y las consultas de presupuesto.",
     link: "https://mydmuebles.netlify.app/",
-    // ⚠️ IMPORTANTE: Asegúrate de que la imagen en tu carpeta 'public' se llame así:
-    image: "/logomydmuebles.png"
+    image: "/logomydmuebles.png" 
   }
 ];
 

@@ -57,23 +57,12 @@ function Navbar() {
           <img src={logo} alt="DTECNO Soluciones Digitales" />
         </Link>
 
-        {/* Menú de Escritorio */}
+        {/* Menú de Escritorio (Sin el botón de WhatsApp) */}
         <div className="navbar-desktop">
           <button onClick={() => handleNavigation('inicio')} className="nav-link">Inicio</button>
           <button onClick={() => handleNavigation('servicios')} className="nav-link">Servicios</button>
           <button onClick={() => handleNavigation('proyectos')} className="nav-link">Proyectos</button>
           <Link to="/it-services" className="nav-link it-link">Servicios IT</Link>
-          
-          <motion.a 
-            href="https://wa.me/1159097342" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="navbar-cta"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <FaWhatsapp /> Cotizar Ahora
-          </motion.a>
         </div>
 
         {/* Botón Hamburguesa para Móvil */}
@@ -82,7 +71,7 @@ function Navbar() {
         </div>
       </div>
 
-      {/* Nuevo Menú Móvil de Pantalla Completa (Overlay) */}
+      {/* Menú Móvil de Pantalla Completa (Overlay) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
@@ -108,6 +97,7 @@ function Navbar() {
               <button onClick={() => handleNavigation('proyectos')} className="mobile-nav-link">Proyectos</button>
               <Link to="/it-services" onClick={() => setIsOpen(false)} className="mobile-nav-link highlight">Servicios IT</Link>
               
+              {/* Mantenemos el botón aquí en el móvil porque es útil para la conversión */}
               <a href="https://wa.me/1159097342" className="mobile-cta-btn">
                  <FaWhatsapp /> Cotizar Ahora
               </a>
